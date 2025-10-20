@@ -1,349 +1,152 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Amora Secreta Sua Loja Íntima Online</title>
-<meta name="description" content="Descubra os melhores produtos eróticos com entrega discreta, segurança e o melhor preço do Brasil." />
-<style>
-  *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
-  body{background:#f8f8f8;color:#222;line-height:1.45}
-  a{color:inherit;text-decoration:none}
-  button{cursor:pointer}
-  .container{max-width:1200px;margin:0 auto;padding:0 16px}
-  
-  /* Header */
-  header{background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.06);position:sticky;top:0;z-index:150}
-  .top-bar{background:#8a1b61;color:#fff;padding:8px 0;font-size:14px}
-  .header-main{padding:12px 0}
-  .header-content{display:flex;align-items:center;justify-content:space-between;gap:12px}
-  .logo{font-weight:800;color:#8a1b61;font-size:22px;cursor:pointer}
-  .search-bar{flex:1;max-width:560px;margin:0 18px;position:relative}
-  .search-bar input{width:100%;padding:10px 14px;border-radius:30px;border:1px solid #ddd;font-size:14px}
-  .user-actions{display:flex;gap:14px;align-items:center}
-  .cart-count{background:#8a1b61;color:#fff;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;margin-left:6px}
 
-  /* Nav */
-  nav{background:#8a1b61}
-  .nav-menu{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:8px 16px}
-  .nav-menu button{background:transparent;border:0;color:#fff;padding:8px 12px;border-radius:6px;font-weight:600}
-  .nav-menu button:hover{background:#6a1449}
 
-  /* Hero */
-  .hero{height:420px;background:linear-gradient(rgba(0,0,0,.32),rgba(0,0,0,.32)),url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');background-size:cover;background-position:center;color:#fff;display:flex;align-items:center}
-  .hero .hero-inner{max-width:640px;padding:28px}
-  .hero h1{font-size:36px;margin-bottom:10px}
-  .hero p{font-size:16px;margin-bottom:18px}
-  .btn{background:#8a1b61;color:#fff;padding:10px 18px;border-radius:30px;border:0;font-weight:700}
-  .btn:hover{background:#6a1449}
+   /* ======================
+   Configurações da loja
+   ====================== */
+const STORE_NAME = 'AMORA SECRETA';
+const STORE_PHONE_INTERNAL = '5535999739111';
+const STORE_PHONE_DISPLAY = '(35) 99973-9111';
+const PIX_KEY = '35999739111';
 
-  /* Products */
-  .section{padding:42px 0}
-  .section-title{text-align:center;margin-bottom:22px;font-size:26px;color:#333}
-  .products{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px}
-  .product-card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 5px 14px rgba(0,0,0,.04)}
-  .product-img{height:180px;background:#f5f5f5;display:flex;align-items:center;justify-content:center}
-  .product-img img{width:100%;height:100%;object-fit:cover}
-  .product-body{padding:12px}
-  .product-title{font-weight:700;margin-bottom:6px;min-height:38px}
-  .product-price{color:#8a1b61;font-weight:800;margin-bottom:8px}
-  .product-actions{display:flex;gap:8px}
-  .small-btn{padding:8px 10px;border-radius:8px;border:0;background:#eee}
-  .add-btn{background:#8a1b61;color:#fff;border:0;padding:8px 12px;border-radius:8px}
+// ✅ URL das Netlify Functions
+const NETLIFY_FUNCTION_URL = '/.netlify/functions/process-payment';
+const CREATE_PREFERENCE_URL = '/.netlify/functions/create-preference';
 
-  /* Cart */
-  .cart-drawer{position:fixed;right:0;top:0;height:100%;width:380px;background:#fff;box-shadow:-12px 0 30px rgba(0,0,0,.08);z-index:200;transform:translateX(100%);transition:transform .25s;padding:18px}
-  .cart-drawer.open{transform:translateX(0)}
-  .cart-items{flex:1;overflow:auto;margin-top:8px}
-  .cart-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #f1f1f1}
-  .cart-item img{width:64px;height:64px;border-radius:6px;background:#f5f5f5;object-fit:cover}
-  .cart-footer{border-top:1px solid #eee;padding-top:12px}
+// ... (mantenha CATEGORIES e PRODUCTS_BY_CATEGORY) ...
 
-  /* Modal */
-  .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;align-items:center;justify-content:center;padding:18px}
-  .modal.open{display:flex}
-  .modal-content{background:#fff;padding:18px;border-radius:10px;max-width:500px;width:100%}
-
-  /* WhatsApp */
-  .whatsapp-float{position:fixed;right:18px;bottom:18px;background:#25D366;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;z-index:400;box-shadow:0 4px 18px rgba(0,0,0,.15)}
-
-  /* Responsive */
-  @media(max-width:760px){.header-content{flex-direction:column}.products{grid-template-columns:1fr}}
-</style>
-</head>
-<body>
-  <header>
-    <div class="top-bar">
-      <div class="container">
-        <div>Frete grátis acima de R$ 199</div>
-        <div>Atendimento: (35) 99973-9111</div>
-      </div>
-    </div>
-
-    <div class="header-main">
-      <div class="container header-content">
-        <div class="logo">AMORA SECRETA</div>
-        <div class="search-bar">
-          <input id="searchInput" placeholder="O que você está procurando?" />
-        </div>
-        <div class="user-actions">
-          <div id="open-cart-btn" style="cursor:pointer">🛒<span class="cart-count" id="cart-count">0</span></div>
-        </div>
-      </div>
-    </div>
-
-    <nav>
-      <div class="container">
-        <ul class="nav-menu" id="navMenu"></ul>
-      </div>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <div class="container hero-inner">
-      <h1>Descubra o prazer com discrição</h1>
-      <p>Os melhores produtos para sua intimidade com total privacidade e entrega rápida.</p>
-      <button class="btn" onclick="scrollToProducts()">Comprar Agora</button>
-    </div>
-  </section>
-
-  <main>
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">Produtos em Destaque</h2>
-        <div class="products" id="productsGrid"></div>
-      </div>
-    </section>
-  </main>
-
-  <aside class="cart-drawer" id="cartDrawer">
-    <div style="display:flex;justify-content:space-between;align-items:center">
-      <h3>Carrinho</h3>
-      <button class="btn" id="closeCartBtn">Fechar</button>
-    </div>
-    <div class="cart-items" id="cartItems"></div>
-    <div class="cart-footer">
-      <div style="display:flex;justify-content:space-between;margin-bottom:12px">
-        <strong>Total:</strong>
-        <strong id="cartTotal">R$ 0,00</strong>
-      </div>
-      <button class="btn" id="checkoutBtn" style="width:100%">Finalizar Pedido via WhatsApp</button>
-    </div>
-  </aside>
-
-  <div class="modal" id="successModal">
-    <div class="modal-content" style="text-align:center">
-      <h2>✅ Pedido Confirmado!</h2>
-      <p>Seu pedido foi enviado para nosso WhatsApp.</p>
-      <p>Em breve entraremos em contato para confirmar.</p>
-      <button class="btn" onclick="closeSuccessModal()" style="margin-top:16px">OK</button>
-    </div>
-  </div>
-
-  <footer style="background:#333;color:#ddd;padding:36px 0;margin-top:50px">
-    <div class="container">
-      <div style="text-align:center">
-        <h3>Amora Secreta</h3>
-        <p>📞 (35) 99973-9111</p>
-        <p>✉️ g6pousoalegre@gmail.com</p>
-        <p style="margin-top:20px">© 2025 - Todos os direitos reservados</p>
-      </div>
-    </div>
-  </footer>
-
-  <a class="whatsapp-float" href="https://wa.me/5535999739111" target="_blank">💚</a>
-
-<script>
-// Dados dos produtos
-const products = [
-  {id:1, title:'Vibrador Bullet', price:59.90, img:'https://via.placeholder.com/300x300?text=Vibrador+Bullet'},
-  {id:2, title:'Gel Excitante', price:29.90, img:'https://via.placeholder.com/300x300?text=Gel+Excitante'},
-  {id:3, title:'Lingerie Sensual', price:89.90, img:'https://via.placeholder.com/300x300?text=Lingerie'},
-  {id:4, title:'Kit Massagem', price:79.90, img:'https://via.placeholder.com/300x300?text=Kit+Massagem'},
-  {id:5, title:'Anel Peniano', price:39.90, img:'https://via.placeholder.com/300x300?text=Anel+Peniano'},
-  {id:6, title:'Plug Anal', price:49.90, img:'https://via.placeholder.com/300x300?text=Plug+Anal'}
-];
-
-// Carrinho
-let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-// Funções básicas
-function formatMoney(v) { return 'R$ ' + v.toFixed(2).replace('.',','); }
-function saveCart() { 
-  localStorage.setItem('cart', JSON.stringify(cart)); 
-  updateCartUI(); 
+/* ---------- Integração com Netlify Functions ---------- */
+async function processPaymentWithNetlify(paymentData) {
+    showProcessing();
+    
+    try {
+        console.log('🔄 Enviando para Netlify Function...');
+        
+        const response = await fetch(NETLIFY_FUNCTION_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(paymentData)
+        });
+        
+        if (!response.ok) {
+            throw new Error(`Erro HTTP: ${response.status}`);
+        }
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            showPaymentSuccess();
+            
+            // Limpar carrinho após sucesso
+            setTimeout(() => {
+                cart = [];
+                saveCart();
+                closePaymentModal();
+                closeCart();
+                
+                // Opcional: redirecionar para página de sucesso
+                // window.location.href = '/sucesso.html';
+                
+            }, 3000);
+            
+        } else {
+            throw new Error(result.error || 'Erro no processamento');
+        }
+        
+    } catch (error) {
+        console.error('❌ Erro:', error);
+        showPaymentError('Erro: ' + error.message);
+    }
 }
 
-// Atualizar carrinho
-function updateCartUI() {
-  document.getElementById('cart-count').textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
-  document.getElementById('cartTotal').textContent = formatMoney(cart.reduce((sum, item) => sum + (item.price * item.quantity), 0));
-  
-  const cartItems = document.getElementById('cartItems');
-  cartItems.innerHTML = '';
-  
-  cart.forEach(item => {
-    const div = document.createElement('div');
-    div.className = 'cart-item';
-    div.innerHTML = `
-      <img src="${item.img}" alt="${item.title}">
-      <div style="flex:1">
-        <div style="font-weight:700">${item.title}</div>
-        <div>${item.quantity}x ${formatMoney(item.price)}</div>
-        <button onclick="removeFromCart(${item.id})" class="small-btn" style="margin-top:8px">Remover</button>
-      </div>
-    `;
-    cartItems.appendChild(div);
-  });
+/* ---------- Processar Pagamento com Cartão ---------- */
+function processCardPayment() {
+    const name = document.getElementById('cardholderName').value;
+    const email = document.getElementById('cardholderEmail').value;
+    const doc = document.getElementById('cardholderDoc').value;
+    
+    if (!name || !email || !doc) {
+        alert('Por favor, preencha todos os dados obrigatórios.');
+        return;
+    }
+    
+    const paymentData = {
+        transactionAmount: cartTotal(),
+        description: `Compra na ${STORE_NAME} - ${cart.length} itens`,
+        installments: parseInt(document.getElementById('installments').value) || 1,
+        payment_method: 'credit_card',
+        payer: {
+            email: email,
+            identification: {
+                type: 'CPF',
+                number: doc.replace(/\D/g, '')
+            }
+        },
+        metadata: {
+            items: cart,
+            store: STORE_NAME,
+            customer_name: name
+        }
+    };
+    
+    processPaymentWithNetlify(paymentData);
 }
 
-// Adicionar ao carrinho
-function addToCart(product) {
-  const existing = cart.find(item => item.id === product.id);
-  if (existing) {
-    existing.quantity++;
-  } else {
-    cart.push({...product, quantity: 1});
-  }
-  saveCart();
-  
-  // Feedback visual
-  const btn = event.target;
-  btn.textContent = '✓ Adicionado!';
-  setTimeout(() => btn.textContent = 'Adicionar ao Carrinho', 1000);
+/* ---------- Processar Boleto ---------- */
+function processBoletoPayment() {
+    const name = document.getElementById('boletoName').value;
+    const email = document.getElementById('boletoEmail').value;
+    const doc = document.getElementById('boletoDoc').value;
+    
+    if (!name || !email || !doc) {
+        alert('Por favor, preencha todos os dados para gerar o boleto.');
+        return;
+    }
+    
+    const paymentData = {
+        transactionAmount: cartTotal(),
+        description: `Compra na ${STORE_NAME} - Boleto`,
+        payment_method: 'bolbradesco',
+        payer: {
+            email: email,
+            first_name: name.split(' ')[0],
+            last_name: name.split(' ').slice(1).join(' '),
+            identification: {
+                type: 'CPF',
+                number: doc.replace(/\D/g, '')
+            }
+        },
+        metadata: {
+            items: cart,
+            store: STORE_NAME
+        }
+    };
+    
+    processPaymentWithNetlify(paymentData);
 }
 
-// Remover do carrinho
-function removeFromCart(productId) {
-  cart = cart.filter(item => item.id !== productId);
-  saveCart();
-}
+// ... (mantenha o resto das funções de utilidade) ...
 
-// Renderizar produtos
-function renderProducts() {
-  const grid = document.getElementById('productsGrid');
-  grid.innerHTML = '';
-  
-  products.forEach(product => {
-    const card = document.createElement('div');
-    card.className = 'product-card';
-    card.innerHTML = `
-      <div class="product-img">
-        <img src="${product.img}" alt="${product.title}">
-      </div>
-      <div class="product-body">
-        <div class="product-title">${product.title}</div>
-        <div class="product-price">${formatMoney(product.price)}</div>
-        <div class="product-actions">
-          <button class="add-btn" onclick="addToCart(${JSON.stringify(product).replace(/"/g, '&quot;')})">
-            Adicionar ao Carrinho
-          </button>
-        </div>
-      </div>
-    `;
-    grid.appendChild(card);
-  });
-}
-
-// Finalizar pedido via WhatsApp
-function checkout() {
-  if (cart.length === 0) {
-    alert('Seu carrinho está vazio!');
-    return;
-  }
-  
-  let message = `Olá! Gostaria de fazer um pedido:\n\n`;
-  let total = 0;
-  
-  cart.forEach(item => {
-    message += `${item.quantity}x ${item.title} - ${formatMoney(item.price)}\n`;
-    total += item.price * item.quantity;
-  });
-  
-  message += `\n*Total: ${formatMoney(total)}*`;
-  message += `\n\nNome: \nEndereço: \nTelefone: `;
-  
-  const url = `https://wa.me/5535999739111?text=${encodeURIComponent(message)}`;
-  window.open(url, '_blank');
-  
-  // Mostrar confirmação
-  document.getElementById('successModal').classList.add('open');
-  
-  // Limpar carrinho
-  cart = [];
-  saveCart();
-  closeCart();
-}
-
-// Controles do carrinho
-function openCart() { document.getElementById('cartDrawer').classList.add('open'); }
-function closeCart() { document.getElementById('cartDrawer').classList.remove('open'); }
-function closeSuccessModal() { document.getElementById('successModal').classList.remove('open'); }
-function scrollToProducts() { document.getElementById('productsGrid').scrollIntoView({behavior:'smooth'}); }
-
-// Menu de categorias
-function setupMenu() {
-  const menu = document.getElementById('navMenu');
-  const categories = ['Vibradores', 'Lubrificantes', 'Lingeries', 'Acessórios', 'Promoções'];
-  
-  categories.forEach(cat => {
-    const li = document.createElement('li');
-    const btn = document.createElement('button');
-    btn.textContent = cat;
-    btn.onclick = () => alert(`Categoria: ${cat}`);
-    li.appendChild(btn);
-    menu.appendChild(li);
-  });
-}
-
-// Inicializar
+/* ---------- Event Listeners para Pagamento ---------- */
 document.addEventListener('DOMContentLoaded', function() {
-  renderProducts();
-  updateCartUI();
-  setupMenu();
-  
-  // Event listeners
-  document.getElementById('open-cart-btn').onclick = openCart;
-  document.getElementById('closeCartBtn').onclick = closeCart;
-  document.getElementById('checkoutBtn').onclick = checkout;
-  
-  // Busca simples
-  document.getElementById('searchInput').oninput = function(e) {
-    const term = e.target.value.toLowerCase();
-    const filtered = products.filter(p => p.title.toLowerCase().includes(term));
-    renderFilteredProducts(filtered);
-  };
+    // Cartão
+    const processCardBtn = document.getElementById('processCardPayment');
+    if (processCardBtn) {
+        processCardBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            processCardPayment();
+        });
+    }
+    
+    // Boleto
+    const generateBoletoBtn = document.getElementById('generateBoleto');
+    if (generateBoletoBtn) {
+        generateBoletoBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            processBoletoPayment();
+        });
+    }
 });
 
-function renderFilteredProducts(filteredProducts) {
-  const grid = document.getElementById('productsGrid');
-  grid.innerHTML = '';
-  
-  if (filteredProducts.length === 0) {
-    grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px">Nenhum produto encontrado</div>';
-    return;
-  }
-  
-  filteredProducts.forEach(product => {
-    const card = document.createElement('div');
-    card.className = 'product-card';
-    card.innerHTML = `
-      <div class="product-img">
-        <img src="${product.img}" alt="${product.title}">
-      </div>
-      <div class="product-body">
-        <div class="product-title">${product.title}</div>
-        <div class="product-price">${formatMoney(product.price)}</div>
-        <div class="product-actions">
-          <button class="add-btn" onclick="addToCart(${JSON.stringify(product).replace(/"/g, '&quot;')})">
-            Adicionar ao Carrinho
-          </button>
-        </div>
-      </div>
-    `;
-    grid.appendChild(card);
-  });
-}
-</script>
-</body>
-</html>
+// ... (mantenha todas as outras funções: updateCartUI, saveCart, etc.) ...
