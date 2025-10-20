@@ -6,32 +6,38 @@
 <title>Amora Secreta Sua Loja Íntima Online</title>
 <meta name="description" content="Descubra os melhores produtos eróticos com entrega discreta, segurança e o melhor preço do Brasil." />
 <style>
-  /* SEU CSS ORIGINAL COMPLETO AQUI */
-  *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
+  /* Reset + base */
+  *{box-sizing:border-box;margin:0;padding:0;font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif}
   body{background:#f8f8f8;color:#222;line-height:1.45}
   a{color:inherit;text-decoration:none}
   button{cursor:pointer}
+
+  /* Container */
   .container{max-width:1200px;margin:0 auto;padding:0 16px}
-  
+
   /* Header */
   header{background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.06);position:sticky;top:0;z-index:150}
   .top-bar{background:#8a1b61;color:#fff;padding:8px 0;font-size:14px}
+  .top-bar .container{display:flex;justify-content:space-between;align-items:center}
   .header-main{padding:12px 0}
   .header-content{display:flex;align-items:center;justify-content:space-between;gap:12px}
   .logo{font-weight:800;color:#8a1b61;font-size:22px;cursor:pointer}
   .search-bar{flex:1;max-width:560px;margin:0 18px;position:relative}
   .search-bar input{width:100%;padding:10px 14px;border-radius:30px;border:1px solid #ddd;font-size:14px}
+  .search-bar button{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:0;font-size:18px;color:#8a1b61}
   .user-actions{display:flex;gap:14px;align-items:center}
+
   .cart-count{background:#8a1b61;color:#fff;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;margin-left:6px}
 
   /* Nav */
   nav{background:#8a1b61}
+  .nav-container{max-width:1200px;margin:0 auto}
   .nav-menu{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:8px 16px}
   .nav-menu button{background:transparent;border:0;color:#fff;padding:8px 12px;border-radius:6px;font-weight:600}
   .nav-menu button:hover{background:#6a1449}
 
   /* Hero */
-  .hero{height:420px;background:linear-gradient(rgba(0,0,0,.32),rgba(0,0,0,.32)),url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');background-size:cover;background-position:center;color:#fff;display:flex;align-items:center}
+  .hero{height:420px;background:linear-gradient(rgba(0,0,0,.32), rgba(0,0,0,.32)),url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');background-size:cover;background-position:center;color:#fff;display:flex;align-items:center}
   .hero .hero-inner{max-width:640px;padding:28px}
   .hero h1{font-size:36px;margin-bottom:10px}
   .hero p{font-size:16px;margin-bottom:18px}
@@ -84,7 +90,6 @@
 </style>
 </head>
 <body>
-  <!-- COLE AQUI TODO O SEU HTML ORIGINAL -->
   <!-- Top header -->
   <header>
     <div class="top-bar">
@@ -106,6 +111,7 @@
         </div>
 
         <div class="user-actions">
+          <!-- Minha Conta e Favoritos removidos -->
           <div id="open-cart-btn" style="cursor:pointer">🛒<span class="cart-count" id="cart-count">0</span></div>
         </div>
       </div>
@@ -118,7 +124,7 @@
     </nav>
   </header>
 
-  <!-- Hero -->
+  <!-- Hero (aparece só na Página Inicial) -->
   <section id="hero" class="hero">
     <div class="container hero-inner">
       <h1>Descubra o prazer com discrição</h1>
@@ -283,19 +289,564 @@
   </a>
 
 <script>
-// COLE AQUI TODO O SEU JAVASCRIPT ORIGINAL
-// Todo o código JavaScript que já estava funcionando
-// Com todas as categorias, produtos, carrinho, etc.
-
 /* ======================
    Configurações da loja
    ====================== */
 const STORE_NAME = 'AMORA SECRETA';
-const STORE_PHONE_INTERNAL = '5535999739111';
+const STORE_PHONE_INTERNAL = '5535999739111'; // para links wa.me
 const STORE_PHONE_DISPLAY = '(35) 99973-9111';
 const PIX_KEY = '35999739111';
+const CATEGORIES = [
+  { key:'home', label:'🏠 Página Inicial' },
+  { key:'salao', label:'🏷️ Saldão' },
+  { key:'mais-vendidos', label:'🔥 Mais Vendidos' },
+  { key:'vibradores', label:'🔊 Vibradores' },
+  { key:'masturbadores', label:'🎯 Masturbadores' },
+  { key:'acessorios', label:'🎁 Acessórios Eróticos' },
+  { key:'brinquedos', label:'🎮 Brinquedos Eróticos' },
+  { key:'cosmeticos', label:'💄 Cosméticos Eróticos' },
+  { key:'proteses', label:'🔌 Próteses e Plugs' },
+  { key:'fantasia', label:'👗 Fantasia Erótica' },
+  { key:'lingeries', label:'👙 Lingeries' },
+  { key:'sado', label:'⛓️ Sado e Fetiche' },
+  { key:'higiene', label:'🧴 Cuidados e Higiene' },
+  { key:'contato', label:'📞 Contato' }
+];
 
-// ... TODO O RESTO DO SEU CÓDIGO ORIGINAL ...
+/* Produtos específicos por categoria - todos cadastrados individualmente */
+const PRODUCTS_BY_CATEGORY = {
+  vibradores: [
+    { id: 'vibrador-1', title: 'Vibrador Bullet', price: 59.90, img: 'images/gel/gelteste.png', category: 'vibradores' },
+    { id: 'vibrador-2', title: 'Vibrador Rabbit', price: 129.90, img: 'images/gel/gelteste.png', category: 'vibradores' },
+    { id: 'vibrador-3', title: 'Vibrador Pontal', price: 79.90, img: 'images/gel/gelteste.png', category: 'vibradores' },
+    { id: 'vibrador-4', title: 'Vibrador Duplo', price: 149.90, img: 'images/gel/gelteste.png', category: 'vibradores' },
+    { id: 'vibrador-5', title: 'Vibrador Control Remoto', price: 169.90, img: 'images/gel/gelteste.png', category: 'vibradores' },
+    { id: 'vibrador-6', title: 'Vibrador Anal', price: 89.90, img: 'images/gel/gelteste.png', category: 'vibradores' },
+    { id: 'vibrador-7', title: 'Vibrador Wand', price: 199.90, img: 'images/gel/gelteste.png', category: 'vibradores' },
+    { id: 'vibrador-8', title: 'Vibrador G-Spot', price: 119.90, img: 'images/gel/gelteste.png', category: 'vibradores' },
+    { id: 'vibrador-9', title: 'Vibrador Silicone', price: 99.90, img: 'images/gel/gelteste.png', category: 'vibradores' },
+    { id: 'vibrador-10', title: 'Vibrador Realista', price: 139.90, img: 'images/gel/gelteste.png', category: 'vibradores' },
+    { id: 'vibrador-11', title: 'Vibrador Mágico', price: 109.90, img: 'images/gel/gelteste.png', category: 'vibradores' },
+    { id: 'vibrador-12', title: 'Vibrador Premium', price: 229.90, img: 'images/gel/gelteste.png', category: 'vibradores' }
+  ],
+  masturbadores: [
+    { id: 'masturbador-1', title: 'Masturbador Pussy', price: 89.90, img: 'images/gel/gelteste.png', category: 'masturbadores' },
+    { id: 'masturbador-2', title: 'Masturbador Anál', price: 99.90, img: 'images/gel/gelteste.png', category: 'masturbadores' },
+    { id: 'masturbador-3', title: 'Masturbador Realista', price: 129.90, img: 'images/gel/gelteste.png', category: 'masturbadores' },
+    { id: 'masturbador-4', title: 'Masturbador Vibratório', price: 159.90, img: 'images/gel/gelteste.png', category: 'masturbadores' },
+    { id: 'masturbador-5', title: 'Masturbador Duplo', price: 179.90, img: 'images/gel/gelteste.png', category: 'masturbadores' },
+    { id: 'masturbador-6', title: 'Masturbador Pocket', price: 69.90, img: 'images/gel/gelteste.png', category: 'masturbadores' },
+    { id: 'masturbador-7', title: 'Masturbador Térmico', price: 139.90, img: 'images/gel/gelteste.png', category: 'masturbadores' },
+    { id: 'masturbador-8', title: 'Masturbador Silicone', price: 119.90, img: 'images/gel/gelteste.png', category: 'masturbadores' },
+    { id: 'masturbador-9', title: 'Masturbador Control Remoto', price: 199.90, img: 'images/gel/gelteste.png', category: 'masturbadores' },
+    { id: 'masturbador-10', title: 'Masturbador Premium', price: 229.90, img: 'images/gel/gelteste.png', category: 'masturbadores' },
+    { id: 'masturbador-11', title: 'Masturbador Masculino', price: 149.90, img: 'images/gel/gelteste.png', category: 'masturbadores' },
+    { id: 'masturbador-12', title: 'Masturbador Feminino', price: 139.90, img: 'images/gel/gelteste.png', category: 'masturbadores' }
+  ],
+  cosmeticos: [
+    { id: 'cosmetico-1', title: 'Gel Excitante', price: 49.90, img: 'images/gel/gelteste.png', category: 'cosmeticos' },
+    { id: 'cosmetico-2', title: 'Lubrificante Íntimo', price: 39.90, img: 'images/gel/gelteste.png', category: 'cosmeticos' },
+    { id: 'cosmetico-3', title: 'Óleo Massagem', price: 59.90, img: 'images/gel/gelteste.png', category: 'cosmeticos' },
+    { id: 'cosmetico-4', title: 'Gel Sensitivo', price: 44.90, img: 'images/gel/gelteste.png', category: 'cosmeticos' },
+    { id: 'cosmetico-5', title: 'Lubrificante Aquecedor', price: 54.90, img: 'images/gel/gelteste.png', category: 'cosmeticos' },
+    { id: 'cosmetico-6', title: 'Gel Esfriante', price: 47.90, img: 'images/gel/gelteste.png', category: 'cosmeticos' },
+    { id: 'cosmetico-7', title: 'Óleo Corporal', price: 62.90, img: 'images/gel/gelteste.png', category: 'cosmeticos' },
+    { id: 'cosmetico-8', title: 'Lubrificante Saborizado', price: 42.90, img: 'images/gel/gelteste.png', category: 'cosmeticos' },
+    { id: 'cosmetico-9', title: 'Gel Erótico', price: 51.90, img: 'images/gel/gelteste.png', category: 'cosmeticos' },
+    { id: 'cosmetico-10', title: 'Óleo Sensual', price: 67.90, img: 'images/gel/gelteste.png', category: 'cosmeticos' },
+    { id: 'cosmetico-11', title: 'Lubrificante Natural', price: 37.90, img: 'images/gel/gelteste.png', category: 'cosmeticos' },
+    { id: 'cosmetico-12', title: 'Gel Íntimo', price: 45.90, img: 'images/gel/gelteste.png', category: 'cosmeticos' }
+  ],
+  acessorios: [
+    { id: 'acessorio-1', title: 'Anel Peniano', price: 29.90, img: 'images/gel/gelteste.png', category: 'acessorios' },
+    { id: 'acessorio-2', title: 'Algemas de Veludo', price: 49.90, img: 'images/gel/gelteste.png', category: 'acessorios' },
+    { id: 'acessorio-3', title: 'Venda Sensual', price: 19.90, img: 'images/gel/gelteste.png', category: 'acessorios' },
+    { id: 'acessorio-4', title: 'Spanker', price: 39.90, img: 'images/gel/gelteste.png', category: 'acessorios' },
+    { id: 'acessorio-5', title: 'Cinta Peniana', price: 59.90, img: 'images/gel/gelteste.png', category: 'acessorios' },
+    { id: 'acessorio-6', title: 'Bolas Ben Wa', price: 69.90, img: 'images/gel/gelteste.png', category: 'acessorios' },
+    { id: 'acessorio-7', title: 'Pingente Erótico', price: 24.90, img: 'images/gel/gelteste.png', category: 'acessorios' },
+    { id: 'acessorio-8', title: 'Coleira de Couro', price: 34.90, img: 'images/gel/gelteste.png', category: 'acessorios' },
+    { id: 'acessorio-9', title: 'Máscara Sensual', price: 27.90, img: 'images/gel/gelteste.png', category: 'acessorios' },
+    { id: 'acessorio-10', title: 'Bengala Erótica', price: 44.90, img: 'images/gel/gelteste.png', category: 'acessorios' },
+    { id: 'acessorio-11', title: 'Pulseira de Couro', price: 31.90, img: 'images/gel/gelteste.png', category: 'acessorios' },
+    { id: 'acessorio-12', title: 'Kit Acessórios', price: 89.90, img: 'images/gel/gelteste.png', category: 'acessorios' }
+  ],
+  brinquedos: [
+    { id: 'brinquedo-1', title: 'Brinquedo Erótico 1', price: 79.90, img: 'images/gel/gelteste.png', category: 'brinquedos' },
+    { id: 'brinquedo-2', title: 'Brinquedo Erótico 2', price: 89.90, img: 'images/gel/gelteste.png', category: 'brinquedos' },
+    { id: 'brinquedo-3', title: 'Brinquedo Erótico 3', price: 99.90, img: 'images/gel/gelteste.png', category: 'brinquedos' },
+    { id: 'brinquedo-4', title: 'Brinquedo Erótico 4', price: 109.90, img: 'images/gel/gelteste.png', category: 'brinquedos' },
+    { id: 'brinquedo-5', title: 'Brinquedo Erótico 5', price: 119.90, img: 'images/gel/gelteste.png', category: 'brinquedos' },
+    { id: 'brinquedo-6', title: 'Brinquedo Erótico 6', price: 129.90, img: 'images/gel/gelteste.png', category: 'brinquedos' },
+    { id: 'brinquedo-7', title: 'Brinquedo Erótico 7', price: 139.90, img: 'images/gel/gelteste.png', category: 'brinquedos' },
+    { id: 'brinquedo-8', title: 'Brinquedo Erótico 8', price: 149.90, img: 'images/gel/gelteste.png', category: 'brinquedos' },
+    { id: 'brinquedo-9', title: 'Brinquedo Erótico 9', price: 159.90, img: 'images/gel/gelteste.png', category: 'brinquedos' },
+    { id: 'brinquedo-10', title: 'Brinquedo Erótico 10', price: 169.90, img: 'images/gel/gelteste.png', category: 'brinquedos' },
+    { id: 'brinquedo-11', title: 'Brinquedo Erótico 11', price: 179.90, img: 'images/gel/gelteste.png', category: 'brinquedos' },
+    { id: 'brinquedo-12', title: 'Brinquedo Erótico 12', price: 189.90, img: 'images/gel/gelteste.png', category: 'brinquedos' }
+  ],
+  proteses: [
+    { id: 'protese-1', title: 'Prótese Realista', price: 149.90, img: 'images/gel/gelteste.png', category: 'proteses' },
+    { id: 'protese-2', title: 'Plug Anal Pequeno', price: 39.90, img: 'images/gel/gelteste.png', category: 'proteses' },
+    { id: 'protese-3', title: 'Plug Anal Médio', price: 49.90, img: 'images/gel/gelteste.png', category: 'proteses' },
+    { id: 'protese-4', title: 'Plug Anal Grande', price: 59.90, img: 'images/gel/gelteste.png', category: 'proteses' },
+    { id: 'protese-5', title: 'Prótese Dupla', price: 169.90, img: 'images/gel/gelteste.png', category: 'proteses' },
+    { id: 'protese-6', title: 'Prótese Vibratória', price: 189.90, img: 'images/gel/gelteste.png', category: 'proteses' },
+    { id: 'protese-7', title: 'Plug Anal Vibratório', price: 79.90, img: 'images/gel/gelteste.png', category: 'proteses' },
+    { id: 'protese-8', title: 'Prótese Realista Plus', price: 199.90, img: 'images/gel/gelteste.png', category: 'proteses' },
+    { id: 'protese-9', title: 'Kit Plugs Anal', price: 129.90, img: 'images/gel/gelteste.png', category: 'proteses' },
+    { id: 'protese-10', title: 'Prótese Premium', price: 229.90, img: 'images/gel/gelteste.png', category: 'proteses' },
+    { id: 'protese-11', title: 'Plug Anal Jewel', price: 69.90, img: 'images/gel/gelteste.png', category: 'proteses' },
+    { id: 'protese-12', title: 'Prótese Realista Gold', price: 249.90, img: 'images/gel/gelteste.png', category: 'proteses' }
+  ],
+  fantasia: [
+    { id: 'fantasia-1', title: 'Fantasia Enfermeira', price: 89.90, img: 'images/gel/gelteste.png', category: 'fantasia' },
+    { id: 'fantasia-2', title: 'Fantasia Policial', price: 99.90, img: 'images/gel/gelteste.png', category: 'fantasia' },
+    { id: 'fantasia-3', title: 'Fantasia Coelhinha', price: 79.90, img: 'images/gel/gelteste.png', category: 'fantasia' },
+    { id: 'fantasia-4', title: 'Fantasia Borboleta', price: 69.90, img: 'images/gel/gelteste.png', category: 'fantasia' },
+    { id: 'fantasia-5', title: 'Fantasia Super-heroína', price: 109.90, img: 'images/gel/gelteste.png', category: 'fantasia' },
+    { id: 'fantasia-6', title: 'Fantasia Fada', price: 84.90, img: 'images/gel/gelteste.png', category: 'fantasia' },
+    { id: 'fantasia-7', title: 'Fantasia Vampira', price: 94.90, img: 'images/gel/gelteste.png', category: 'fantasia' },
+    { id: 'fantasia-8', title: 'Fantasia Angel', price: 89.90, img: 'images/gel/gelteste.png', category: 'fantasia' },
+    { id: 'fantasia-9', title: 'Fantasia Devil', price: 99.90, img: 'images/gel/gelteste.png', category: 'fantasia' },
+    { id: 'fantasia-10', title: 'Fantasia French Maid', price: 79.90, img: 'images/gel/gelteste.png', category: 'fantasia' },
+    { id: 'fantasia-11', title: 'Fantasia Schoolgirl', price: 74.90, img: 'images/gel/gelteste.png', category: 'fantasia' },
+    { id: 'fantasia-12', title: 'Fantasia Cop', price: 89.90, img: 'images/gel/gelteste.png', category: 'fantasia' }
+  ],
+  lingeries: [
+    { id: 'lingerie-1', title: 'Lingerie Rendada', price: 69.90, img: 'images/gel/gelteste.png', category: 'lingeries' },
+    { id: 'lingerie-2', title: 'Lingerie Sensual', price: 79.90, img: 'images/gel/gelteste.png', category: 'lingeries' },
+    { id: 'lingerie-3', title: 'Lingerie Couro', price: 99.90, img: 'images/gel/gelteste.png', category: 'lingeries' },
+    { id: 'lingerie-4', title: 'Lingerie Babydoll', price: 89.90, img: 'images/gel/gelteste.png', category: 'lingeries' },
+    { id: 'lingerie-5', title: 'Lingerie Bodystocking', price: 109.90, img: 'images/gel/gelteste.png', category: 'lingeries' },
+    { id: 'lingerie-6', title: 'Lingerie Transparente', price: 74.90, img: 'images/gel/gelteste.png', category: 'lingeries' },
+    { id: 'lingerie-7', title: 'Lingerie Vermelha', price: 84.90, img: 'images/gel/gelteste.png', category: 'lingeries' },
+    { id: 'lingerie-8', title: 'Lingerie Preta', price: 79.90, img: 'images/gel/gelteste.png', category: 'lingeries' },
+    { id: 'lingerie-9', title: 'Lingerie Branca', price: 69.90, img: 'images/gel/gelteste.png', category: 'lingeries' },
+    { id: 'lingerie-10', title: 'Lingerie Azul', price: 89.90, img: 'images/gel/gelteste.png', category: 'lingeries' },
+    { id: 'lingerie-11', title: 'Lingerie Verde', price: 79.90, img: 'images/gel/gelteste.png', category: 'lingeries' },
+    { id: 'lingerie-12', title: 'Lingerie Roxa', price: 94.90, img: 'images/gel/gelteste.png', category: 'lingeries' }
+  ],
+  sado: [
+    { id: 'sado-1', title: 'Algemas de Metal', price: 59.90, img: 'images/gel/gelteste.png', category: 'sado' },
+    { id: 'sado-2', title: 'Máscara de Couro', price: 49.90, img: 'images/gel/gelteste.png', category: 'sado' },
+    { id: 'sado-3', title: 'Chicote de Couro', price: 69.90, img: 'images/gel/gelteste.png', category: 'sado' },
+    { id: 'sado-4', title: 'Coleira com Corrente', price: 39.90, img: 'images/gel/gelteste.png', category: 'sado' },
+    { id: 'sado-5', title: 'Mordaça de Borracha', price: 34.90, img: 'images/gel/gelteste.png', category: 'sado' },
+    { id: 'sado-6', title: 'Spanker de Couro', price: 54.90, img: 'images/gel/gelteste.png', category: 'sado' },
+    { id: 'sado-7', title: 'Cinta de Castidade', price: 129.90, img: 'images/gel/gelteste.png', category: 'sado' },
+    { id: 'sado-8', title: 'Algemas de Velcro', price: 44.90, img: 'images/gel/gelteste.png', category: 'sado' },
+    { id: 'sado-9', title: 'Máscara de Latex', price: 59.90, img: 'images/gel/gelteste.png', category: 'sado' },
+    { id: 'sado-10', title: 'Chicote de Cabelo', price: 79.90, img: 'images/gel/gelteste.png', category: 'sado' },
+    { id: 'sado-11', title: 'Coleira com Spike', price: 49.90, img: 'images/gel/gelteste.png', category: 'sado' },
+    { id: 'sado-12', title: 'Kit Sado Básico', price: 149.90, img: 'images/gel/gelteste.png', category: 'sado' }
+  ],
+  higiene: [
+    { id: 'higiene-1', title: 'Sabonete Íntimo', price: 24.90, img: 'images/gel/gelteste.png', category: 'higiene' },
+    { id: 'higiene-2', title: 'Lenço Umedecido', price: 19.90, img: 'images/gel/gelteste.png', category: 'higiene' },
+    { id: 'higiene-3', title: 'Hidratante Íntimo', price: 34.90, img: 'images/gel/gelteste.png', category: 'higiene' },
+    { id: 'higiene-4', title: 'Spray Íntimo', price: 29.90, img: 'images/gel/gelteste.png', category: 'higiene' },
+    { id: 'higiene-5', title: 'Creme Hidratante', price: 39.90, img: 'images/gel/gelteste.png', category: 'higiene' },
+    { id: 'higiene-6', title: 'Óleo Corporal', price: 44.90, img: 'images/gel/gelteste.png', category: 'higiene' },
+    { id: 'higiene-7', title: 'Gel de Limpeza', price: 27.90, img: 'images/gel/gelteste.png', category: 'higiene' },
+    { id: 'higiene-8', title: 'Sabonete Líquido', price: 22.90, img: 'images/gel/gelteste.png', category: 'higiene' },
+    { id: 'higiene-9', title: 'Creme Relaxante', price: 37.90, img: 'images/gel/gelteste.png', category: 'higiene' },
+    { id: 'higiene-10', title: 'Spray Refrescante', price: 31.90, img: 'images/gel/gelteste.png', category: 'higiene' },
+    { id: 'higiene-11', title: 'Loção Corporal', price: 42.90, img: 'images/gel/gelteste.png', category: 'higiene' },
+    { id: 'higiene-12', title: 'Kit Higiene Íntima', price: 89.90, img: 'images/gel/gelteste.png', category: 'higiene' }
+  ],
+  salao: [
+    { id: 'salao-1', title: 'Vibrador Bullet - Promo', price: 39.90, img: 'images/gel/gelteste.png', category: 'salao' },
+    { id: 'salao-2', title: 'Lubrificante - Oferta', price: 29.90, img: 'images/gel/gelteste.png', category: 'salao' },
+    { id: 'salao-3', title: 'Anel Peniano - Desconto', price: 19.90, img: 'images/gel/gelteste.png', category: 'salao' },
+    { id: 'salao-4', title: 'Plug Anal - Liquidação', price: 34.90, img: 'images/gel/gelteste.png', category: 'salao' },
+    { id: 'salao-5', title: 'Lingerie - Promocional', price: 49.90, img: 'images/gel/gelteste.png', category: 'salao' },
+    { id: 'salao-6', title: 'Fantasia - Oferta', price: 59.90, img: 'images/gel/gelteste.png', category: 'salao' },
+    { id: 'salao-7', title: 'Masturbador - Desconto', price: 69.90, img: 'images/gel/gelteste.png', category: 'salao' },
+    { id: 'salao-8', title: 'Acessório - Promoção', price: 24.90, img: 'images/gel/gelteste.png', category: 'salao' },
+    { id: 'salao-9', title: 'Cosmético - Liquidação', price: 34.90, img: 'images/gel/gelteste.png', category: 'salao' },
+    { id: 'salao-10', title: 'Brinquedo - Oferta', price: 79.90, img: 'images/gel/gelteste.png', category: 'salao' },
+    { id: 'salao-11', title: 'Prótese - Promocional', price: 99.90, img: 'images/gel/gelteste.png', category: 'salao' },
+    { id: 'salao-12', title: 'Sado - Desconto', price: 44.90, img: 'images/gel/gelteste.png', category: 'salao' }
+  ],
+  'mais-vendidos': [
+    { id: 'mais-vendido-1', title: 'Vibrador Rabbit Premium', price: 19.90, img: 'images/gel/cremeteste.png', category: 'mais-vendidos' },
+    { id: 'mais-vendido-2', title: 'Sache Gel Excitante Plus', price: 2.90, img: 'images/gel/gelteste.png', category: 'mais-vendidos' },
+    { id: 'mais-vendido-3', title: 'Lingerie Sensual Premium', price: 89.90, img: 'images/gel/gelteste.png', category: 'mais-vendidos' },
+    { id: 'mais-vendido-4', title: 'Masturbador Realista', price: 129.90, img: 'images/gel/gelteste.png', category: 'mais-vendidos' },
+    { id: 'mais-vendido-5', title: 'Plug Anal Jewel', price: 69.90, img: 'images/gel/gelteste.png', category: 'mais-vendidos' },
+    { id: 'mais-vendido-6', title: 'Anel Peniano Vibratório', price: 79.90, img: 'images/gel/gelteste.png', category: 'mais-vendidos' },
+    { id: 'mais-vendido-7', title: 'Fantasia Enfermeira Plus', price: 99.90, img: 'images/gel/gelteste.png', category: 'mais-vendidos' },
+    { id: 'mais-vendido-8', title: 'Lubrificante Aquecedor', price: 44.90, img: 'images/gel/gelteste.png', category: 'mais-vendidos' },
+    { id: 'mais-vendido-9', title: 'Kit Acessórios Premium', price: 119.90, img: 'images/gel/gelteste.png', category: 'mais-vendidos' },
+    { id: 'mais-vendido-10', title: 'Vibrador Wand Plus', price: 179.90, img: 'images/gel/gelteste.png', category: 'mais-vendidos' },
+    { id: 'mais-vendido-11', title: 'Prótese Realista Gold', price: 199.90, img: 'images/gel/gelteste.png', category: 'mais-vendidos' },
+    { id: 'mais-vendido-12', title: 'Masturbador Control Remoto', price: 159.90, img: 'images/gel/gelteste.png', category: 'mais-vendidos' }
+  ]
+};
+
+/* ALL PRODUCTS para home (pegar os primeiros 12 de todas categorias) */
+let ALL_PRODUCTS = [];
+Object.keys(PRODUCTS_BY_CATEGORY).forEach(k => ALL_PRODUCTS = ALL_PRODUCTS.concat(PRODUCTS_BY_CATEGORY[k]));
+if(ALL_PRODUCTS.length > 24) ALL_PRODUCTS = ALL_PRODUCTS.slice(0,12);
+
+/* Estado SPA e carrinho */
+let current = 'home';
+const CART_KEY = 'amora_cart_v3';
+let cart = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+
+/* ---------- Util ---------- */
+function formatMoney(v){ return 'R$ ' + Number(v).toFixed(2).replace('.',','); }
+function saveCart(){ localStorage.setItem(CART_KEY, JSON.stringify(cart)); updateCartUI(); }
+function cartTotal(){ return cart.reduce((s,i)=> s + (i.price * i.qty), 0); }
+function findProductById(id){
+  for(const k in PRODUCTS_BY_CATEGORY){
+    const f = PRODUCTS_BY_CATEGORY[k].find(p=>p.id===id);
+    if(f) return f;
+  }
+  return null;
+}
+
+/* ---------- Render menu ---------- */
+const navMenu = document.getElementById('navMenu');
+CATEGORIES.forEach(cat=>{
+  const li = document.createElement('li');
+  const btn = document.createElement('button');
+  btn.textContent = cat.label;
+  btn.dataset.key = cat.key;
+  btn.addEventListener('click', ()=> {
+    if(cat.key === 'home') goHome();
+    else goToCategory(cat.key);
+  });
+  li.appendChild(btn);
+  navMenu.appendChild(li);
+});
+
+/* Logo click -> home */
+document.getElementById('logoBtn').addEventListener('click', goHome);
+
+/* ---------- Render products ---------- */
+const productsGrid = document.getElementById('productsGrid');
+function renderProducts(list){
+  productsGrid.innerHTML = '';
+  if(list.length === 0){
+    productsGrid.innerHTML = `<div style="grid-column:1/-1;background:#fff;padding:18px;border-radius:10px;box-shadow:0 5px 14px rgba(0,0,0,.04)">Nenhum produto encontrado.</div>`;
+    return;
+  }
+  list.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'product-card';
+    card.innerHTML = `
+      <div class="product-img"><img src="${p.img}" alt="${p.title}" loading="lazy" onerror="this.src='https://via.placeholder.com/300x300?text=Imagem+Indisponível'"></div>
+      <div class="product-body">
+        <div class="product-title">${p.title}</div>
+        <div class="product-price">${formatMoney(p.price)}</div>
+        <div class="product-actions">
+          <button class="add-btn" data-add="${p.id}">Adicionar ao Carrinho</button>
+          <button class="small-btn favorite-btn" data-fav="${p.id}">❤️</button>
+        </div>
+      </div>
+    `;
+    productsGrid.appendChild(card);
+  });
+}
+
+/* Home view */
+function goHome(){
+  current = 'home';
+  document.getElementById('hero').style.display = 'flex';
+  document.getElementById('sectionTitle').textContent = 'Produtos em Destaque';
+  renderProducts(ALL_PRODUCTS);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* Category view */
+function goToCategory(key){
+  current = key;
+  document.getElementById('hero').style.display = 'none';
+  if(key === 'contato'){
+    document.getElementById('sectionTitle').textContent = 'Contato';
+    const grid = document.getElementById('productsGrid');
+    grid.innerHTML = `<div style="grid-column:1/-1;background:#fff;padding:18px;border-radius:10px;box-shadow:0 5px 14px rgba(0,0,0,.04)">
+      <h3>Fale Conosco</h3>
+      <p>Telefone: ${STORE_PHONE_DISPLAY}</p>
+      <p>Email: g6pousoalegre@gmail.com</p>
+      <p>Endereço: Itajubá - MG</p>
+    </div>`;
+    return;
+  }
+  const list = PRODUCTS_BY_CATEGORY[key] || [];
+  document.getElementById('sectionTitle').textContent = CATEGORIES.find(c=>c.key===key)?.label || 'Categoria';
+  renderProducts(list);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+/* Inicial */
+goHome();
+
+/* ---------- Search ---------- */
+document.getElementById('searchInput').addEventListener('input', function(){
+  const q = this.value.trim().toLowerCase();
+  if(!q){
+    (current === 'home') ? renderProducts(ALL_PRODUCTS) : goToCategory(current);
+    return;
+  }
+  let pool = [];
+  Object.keys(PRODUCTS_BY_CATEGORY).forEach(k => pool = pool.concat(PRODUCTS_BY_CATEGORY[k]));
+  const found = pool.filter(p => p.title.toLowerCase().includes(q));
+  document.getElementById('sectionTitle').textContent = `Resultados para "${q}" (${found.length})`;
+  renderProducts(found);
+});
+
+/* ---------- Cart logic ---------- */
+function updateCartUI(){
+  const cartCount = document.getElementById('cart-count');
+  const cartItemsEl = document.getElementById('cartItems');
+  const cartTotalEl = document.getElementById('cartTotal');
+  cartCount.textContent = cart.reduce((s,i)=>s+i.qty,0);
+  cartItemsEl.innerHTML = '';
+  if(cart.length === 0) cartItemsEl.innerHTML = '<div style="padding:18px;color:#666">Seu carrinho está vazio.</div>';
+  cart.forEach(item=>{
+    const el = document.createElement('div');
+    el.className = 'cart-item';
+    el.innerHTML = `
+      <img src="${item.img}" alt="${item.title}" onerror="this.src='https://via.placeholder.com/300x300?text=Imagem+Indisponível'" />
+      <div style="flex:1">
+        <div style="font-weight:700">${item.title}</div>
+        <div style="margin-top:6px;color:#666">Qtd: ${item.qty} • ${formatMoney(item.price)}</div>
+        <div style="margin-top:8px;display:flex;gap:6px">
+          <button class="small-btn" data-action="minus" data-id="${item.id}">-</button>
+          <button class="small-btn" data-action="plus" data-id="${item.id}">+</button>
+          <button class="small-btn" data-action="remove" data-id="${item.id}">Remover</button>
+        </div>
+      </div>
+    `;
+    cartItemsEl.appendChild(el);
+  });
+  cartTotalEl.textContent = formatMoney(cartTotal());
+  document.getElementById('modalTotal').textContent = formatMoney(cartTotal());
+  renderMiniSummary();
+}
+
+/* Add to cart delegation */
+document.addEventListener('click', function(e){
+  const t = e.target;
+  if(t.dataset.add){
+    const pid = t.dataset.add;
+    const prod = findProductById(pid);
+    if(!prod) return alert('Produto não encontrado');
+    const inCart = cart.find(i=>i.id===pid);
+    if(inCart) inCart.qty++;
+    else cart.push({ id:prod.id, title:prod.title, price:prod.price, qty:1, img:prod.img });
+    saveCart();
+    t.textContent = 'Adicionado!';
+    setTimeout(()=> t.textContent = 'Adicionar ao Carrinho',900);
+  }
+
+  if(t.classList.contains('favorite-btn')){
+    t.classList.toggle('active');
+  }
+
+  if(t.id === 'open-cart-btn') openCart();
+  if(t.id === 'closeCartBtn') closeCart();
+
+  if(t.dataset.action){
+    const id = t.dataset.id;
+    const action = t.dataset.action;
+    const idx = cart.findIndex(i=>i.id === id);
+    if(idx === -1) return;
+    if(action === 'plus') cart[idx].qty++;
+    if(action === 'minus'){ cart[idx].qty--; if(cart[idx].qty<=0) cart.splice(idx,1); }
+    if(action === 'remove') cart.splice(idx,1);
+    saveCart();
+  }
+
+  if(t.id === 'clearCartBtn'){ if(confirm('Deseja limpar o carrinho?')){ cart=[]; saveCart(); } }
+
+  if(t.id === 'checkoutBtn'){ openPaymentModal(); }
+});
+
+/* Open/close cart */
+const cartDrawer = document.getElementById('cartDrawer');
+function openCart(){ cartDrawer.classList.add('open'); cartDrawer.setAttribute('aria-hidden','false'); updateCartUI(); }
+function closeCart(){ cartDrawer.classList.remove('open'); cartDrawer.setAttribute('aria-hidden','true'); }
+
+/* Persistência */
+(function(){ const saved = JSON.parse(localStorage.getItem(CART_KEY) || '[]'); if(saved && Array.isArray(saved)){ cart = saved; updateCartUI(); } })();
+function saveCart(){ localStorage.setItem(CART_KEY, JSON.stringify(cart)); updateCartUI(); }
+
+/* Mini summary in modal */
+function renderMiniSummary(){
+  const mini = document.getElementById('miniCartSummary');
+  if(cart.length===0){ mini.innerHTML = '<div>Nenhum item</div>'; return; }
+  let html = '<ul style="list-style:none;padding:0;margin:0">';
+  cart.forEach(i=> html += `<li style="margin-bottom:6px">${i.qty}x ${i.title} — ${formatMoney(i.price)}</li>`);
+  html += '</ul>';
+  mini.innerHTML = html;
+}
+
+/* ---------- Payment: build BR Code PIX (EMV) with CRC16 ---------- */
+/* We'll build a BR Code (EMV) string that many banks recognize.
+   This algorithm constructs EMV tags for merchant, pix key, amount (optional), and calculates CRC16-CCITT (0x1021 init 0xFFFF).
+   Note: For total production reliability, server-side generation is recommended, but this works for client-side flows.
+*/
+
+function pad2(v){ return v.toString().padStart(2,'0'); }
+function tlv(id, value){
+  if(value == null) return '';
+  const len = String(value.length).padStart(2,'0');
+  return id + len + value;
+}
+function crc16(str){
+  // CRC16/CCITT-FALSE implementation
+  let crc = 0xFFFF;
+  for (let i = 0; i < str.length; i++) {
+    crc ^= str.charCodeAt(i) << 8;
+    for (let j = 0; j < 8; j++) {
+      crc = (crc & 0x8000) ? ((crc << 1) ^ 0x1021) : (crc << 1);
+      crc &= 0xFFFF;
+    }
+  }
+  return crc.toString(16).toUpperCase().padStart(4,'0');
+}
+
+function buildBRCode({pixKey, merchantName, merchantCity, amount, txid}){
+  // 00: Payload Format Indicator
+  // 26: Merchant Account Info -> 00: GUI, 01: Key (pix), 02: optional description? We'll use 00 GUI + 01 key
+  // 52: Merchant Category Code
+  // 53: Transaction Currency (986 BRL)
+  // 54: Transaction Amount (optional)
+  // 58: Country Code (BR)
+  // 59: Merchant Name
+  // 60: Merchant City
+  // 62: Additional Data Field Template -> 05: TxID
+  let payload = '';
+  payload += tlv('00','01'); // versão
+  // Merchant Account Information (Pix)
+  const gui = 'br.gov.bcb.pix';
+  let mai = '';
+  mai += tlv('00', gui);
+  // 01 -> chave pix
+  mai += tlv('01', pixKey);
+  // 02 -> description optional omitted
+  payload += tlv('26', mai);
+  payload += tlv('52', '0000');
+  payload += tlv('53', '986');
+  if(amount && amount > 0) payload += tlv('54', amount.toFixed(2).replace('.',','));
+  payload += tlv('58', 'BR');
+  payload += tlv('59', (merchantName || 'AMORA SECRETA').substring(0,25));
+  payload += tlv('60', (merchantCity || 'ITAJUBA').substring(0,15));
+  // Additional Data Field Template
+  const add = tlv('05', (txid || '***'));
+  payload += tlv('62', add);
+  // CRC placeholder
+  const payloadForCrc = payload + '6304';
+  const crc = crc16(payloadForCrc);
+  return payloadForCrc + crc;
+}
+
+/* Build copy&paste text for fallback */
+function buildPixCopyText(amount, pixKey){
+  const valorStr = amount.toFixed(2).replace('.',',');
+  return `CHAVE:${pixKey};VALOR:${valorStr};LOJA:${STORE_NAME}`;
+}
+
+/* Update pix area when opening modal */
+const paymentModal = document.getElementById('paymentModal');
+const pixPanel = document.getElementById('pixPanel');
+const cardPanel = document.getElementById('cardPanel');
+const boletoPanel = document.getElementById('boletoPanel');
+const pixOption = document.getElementById('pixOption');
+const cardOption = document.getElementById('cardOption');
+const boletoOption = document.getElementById('boletoOption');
+
+document.getElementById('closePaymentModal').addEventListener('click', closePaymentModal);
+pixOption.addEventListener('click', ()=> showPanel('pix'));
+cardOption.addEventListener('click', ()=> showPanel('card'));
+boletoOption.addEventListener('click', ()=> showPanel('boleto'));
+
+function openPaymentModal(){
+  if(cart.length === 0){ alert('Seu carrinho está vazio. Adicione produtos antes de finalizar.'); return; }
+  paymentModal.classList.add('open');
+  paymentModal.setAttribute('aria-hidden','false');
+  showPanel('pix');
+  renderMiniSummary();
+  updatePixArea();
+}
+function closePaymentModal(){ paymentModal.classList.remove('open'); paymentModal.setAttribute('aria-hidden','true'); document.getElementById('qrBox').style.display='none'; }
+function showPanel(which){
+  pixPanel.style.display = which === 'pix' ? 'block' : 'none';
+  cardPanel.style.display = which === 'card' ? 'block' : 'none';
+  boletoPanel.style.display = which === 'boleto' ? 'block' : 'none';
+}
+
+/* Update pix text and QR */
+function updatePixArea(){
+  const amount = cartTotal();
+  const pixText = buildPixCopyText(amount, PIX_KEY);
+  document.getElementById('pixCopyArea').textContent = pixText;
+  document.getElementById('pixKeyDisplay').textContent = PIX_KEY;
+  document.getElementById('modalTotal').textContent = formatMoney(amount);
+  document.getElementById('qrBox').style.display = 'none';
+}
+
+/* Copy pix text */
+document.getElementById('copyPixBtn').addEventListener('click', function(){
+  const amount = cartTotal();
+  const copy = buildPixCopyText(amount, PIX_KEY);
+  navigator.clipboard.writeText(copy).then(()=>{
+    this.textContent = 'Copiado!';
+    setTimeout(()=> this.textContent = 'Copiar Código PIX (com valor)', 2000);
+  });
+});
+
+/* Show QR (BR Code) */
+document.getElementById('showQrBtn').addEventListener('click', function(){
+  const amount = cartTotal();
+  // amount string for EMV needs decimal with dot; we'll pass numeric
+  const txid = `PED-${Date.now().toString().slice(-6)}`;
+  const brCode = buildBRCode({ pixKey: PIX_KEY, merchantName: STORE_NAME, merchantCity: 'ITAJUBA', amount: amount, txid });
+  // Generate QR via Google Chart API for convenience
+  const qrUrl = `https://chart.googleapis.com/chart?cht=qr&chs=350x350&chl=${encodeURIComponent(brCode)}`;
+  document.getElementById('qrImage').src = qrUrl;
+  document.getElementById('qrBox').style.display = 'block';
+});
+
+/* Send order by WhatsApp */
+document.getElementById('whatsappPayBtn').addEventListener('click', function(){
+  if(cart.length === 0){ alert('Carrinho vazio'); return; }
+  let msg = `Olá, gostaria de finalizar meu pedido na ${STORE_NAME}%0A`;
+  msg += `Telefone: ${STORE_PHONE_DISPLAY}%0A`;
+  msg += `-- Pedido --%0A`;
+  cart.forEach(i=>{
+    msg += `${i.qty}x ${i.title} - ${formatMoney(i.price)}%0A`;
+  });
+  msg += `%0ATotal: ${formatMoney(cartTotal())}%0A%0A`;
+  msg += `Vou pagar via PIX (chave: ${PIX_KEY}).`;
+  const wa = `https://wa.me/${STORE_PHONE_INTERNAL}?text=${encodeURIComponent(decodeURIComponent(msg))}`;
+  window.open(wa, '_blank');
+});
+
+/* Simulated card and boleto */
+document.getElementById('simulateCardBtn').addEventListener('click', function(){
+  alert('Pagamento por cartão (simulado) realizado. Obrigado!');
+  cart = []; saveCart(); closePaymentModal(); closeCart();
+});
+document.getElementById('simulateBoletoBtn').addEventListener('click', function(){
+  alert('Boleto (simulado) gerado e enviado por e-mail.');
+  cart = []; saveCart(); closePaymentModal(); closeCart();
+});
+
+/* ---------- Open/close cart buttons ---------- */
+document.getElementById('open-cart-btn').addEventListener('click', openCart);
+document.getElementById('closeCartBtn').addEventListener('click', closeCart);
+
+/* ---------- init ---------- */
+updateCartUI();
+window.addEventListener('load', ()=> updateCartUI());
+
+/* Optional: keyboard 'c' to open cart (dev) */
+// document.addEventListener('keydown', e=>{ if(e.key==='c') openCart(); });
 
 </script>
 </body>
