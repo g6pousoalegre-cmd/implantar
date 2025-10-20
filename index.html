@@ -1,6 +1,293 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Amora Secreta Sua Loja Íntima Online</title>
+<meta name="description" content="Descubra os melhores produtos eróticos com entrega discreta, segurança e o melhor preço do Brasil." />
+<style>
+  /* SEU CSS ORIGINAL COMPLETO AQUI */
+  *{box-sizing:border-box;margin:0;padding:0;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif}
+  body{background:#f8f8f8;color:#222;line-height:1.45}
+  a{color:inherit;text-decoration:none}
+  button{cursor:pointer}
+  .container{max-width:1200px;margin:0 auto;padding:0 16px}
+  
+  /* Header */
+  header{background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.06);position:sticky;top:0;z-index:150}
+  .top-bar{background:#8a1b61;color:#fff;padding:8px 0;font-size:14px}
+  .header-main{padding:12px 0}
+  .header-content{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .logo{font-weight:800;color:#8a1b61;font-size:22px;cursor:pointer}
+  .search-bar{flex:1;max-width:560px;margin:0 18px;position:relative}
+  .search-bar input{width:100%;padding:10px 14px;border-radius:30px;border:1px solid #ddd;font-size:14px}
+  .user-actions{display:flex;gap:14px;align-items:center}
+  .cart-count{background:#8a1b61;color:#fff;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;font-size:11px;margin-left:6px}
 
+  /* Nav */
+  nav{background:#8a1b61}
+  .nav-menu{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:8px 16px}
+  .nav-menu button{background:transparent;border:0;color:#fff;padding:8px 12px;border-radius:6px;font-weight:600}
+  .nav-menu button:hover{background:#6a1449}
 
-   /* ======================
+  /* Hero */
+  .hero{height:420px;background:linear-gradient(rgba(0,0,0,.32),rgba(0,0,0,.32)),url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');background-size:cover;background-position:center;color:#fff;display:flex;align-items:center}
+  .hero .hero-inner{max-width:640px;padding:28px}
+  .hero h1{font-size:36px;margin-bottom:10px}
+  .hero p{font-size:16px;margin-bottom:18px}
+  .btn{background:#8a1b61;color:#fff;padding:10px 18px;border-radius:30px;border:0;font-weight:700}
+  .btn:hover{background:#6a1449}
+
+  /* Products */
+  .section{padding:42px 0}
+  .section-title{text-align:center;margin-bottom:22px;font-size:26px;color:#333}
+  .products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .product-card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 5px 14px rgba(0,0,0,.04);display:flex;flex-direction:column}
+  .product-img{height:180px;background:#f5f5f5;display:flex;align-items:center;justify-content:center;font-size:34px}
+  .product-img img{width:100%;height:100%;object-fit:cover;display:block}
+  .product-body{padding:12px;flex:1;display:flex;flex-direction:column}
+  .product-title{font-weight:700;font-size:14px;margin-bottom:6px;min-height:38px}
+  .product-price{color:#8a1b61;font-weight:800;margin-bottom:8px}
+  .product-actions{margin-top:auto;display:flex;gap:8px}
+  .small-btn{padding:8px 10px;border-radius:8px;border:0;background:#eee}
+  .add-btn{background:#8a1b61;color:#fff;border:0;padding:8px 12px;border-radius:8px}
+
+  /* Cart drawer */
+  .cart-drawer{position:fixed;right:0;top:0;height:100%;width:380px;background:#fff;box-shadow:-12px 0 30px rgba(0,0,0,.08);z-index:200;transform:translateX(100%);transition:transform .25s;padding:18px;display:flex;flex-direction:column}
+  .cart-drawer.open{transform:translateX(0)}
+  .cart-items{flex:1;overflow:auto;margin-top:8px}
+  .cart-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid #f1f1f1}
+  .cart-item img{width:64px;height:64px;border-radius:6px;background:#f5f5f5;object-fit:cover}
+  .cart-footer{border-top:1px solid #eee;padding-top:12px}
+
+  /* Modal (payment) */
+  .modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;align-items:center;justify-content:center;padding:18px}
+  .modal.open{display:flex}
+  .modal-content{background:#fff;padding:18px;border-radius:10px;max-width:760px;width:100%;max-height:90vh;overflow:auto}
+  .modal-grid{display:grid;grid-template-columns:1fr 320px;gap:16px}
+  .pix-code{background:#f5f5f5;padding:12px;border-radius:6px;word-break:break-all}
+  .qr-img{max-width:100%;border-radius:8px;border:1px solid #eee}
+
+  /* Footer */
+  footer{background:#333;color:#ddd;padding:36px 0}
+  .footer-columns{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px}
+  .footer-columns h3{color:#fff;margin-bottom:8px}
+  .footer-bottom{text-align:center;margin-top:14px;border-top:1px solid rgba(255,255,255,.06);padding-top:12px;font-size:14px}
+
+  /* WhatsApp float */
+  .whatsapp-float{position:fixed;right:18px;bottom:18px;background:#25D366;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;z-index:400;box-shadow:0 4px 18px rgba(0,0,0,.15)}
+  .whatsapp-float:hover{transform:scale(1.04)}
+
+  /* Responsive */
+  @media(max-width:1000px){.products{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:760px){.header-content{flex-direction:column;align-items:flex-start}.products{grid-template-columns:repeat(1,1fr)}.modal-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+  <!-- COLE AQUI TODO O SEU HTML ORIGINAL -->
+  <!-- Top header -->
+  <header>
+    <div class="top-bar">
+      <div class="container">
+        <div>Frete grátis acima de R$ 199</div>
+        <div>Atendimento: (35) 99973-9111</div>
+      </div>
+    </div>
+
+    <div class="header-main">
+      <div class="container header-content">
+        <div style="display:flex;align-items:center;gap:12px">
+          <div class="logo" id="logoBtn">AMORA SECRETA</div>
+        </div>
+
+        <div class="search-bar">
+          <input id="searchInput" placeholder="O que você está procurando? (ex: vibrador)" />
+          <button onclick="document.getElementById('searchInput').focus()">🔍</button>
+        </div>
+
+        <div class="user-actions">
+          <div id="open-cart-btn" style="cursor:pointer">🛒<span class="cart-count" id="cart-count">0</span></div>
+        </div>
+      </div>
+    </div>
+
+    <nav>
+      <div class="nav-container">
+        <ul class="nav-menu container" id="navMenu"></ul>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section id="hero" class="hero">
+    <div class="container hero-inner">
+      <h1>Descubra o prazer com discrição</h1>
+      <p>Os melhores produtos para sua intimidade com total privacidade e entrega rápida.</p>
+      <button class="btn" onclick="goHome()">Comprar Agora</button>
+    </div>
+  </section>
+
+  <!-- Main products -->
+  <main>
+    <section class="section" id="productsSection">
+      <div class="container">
+        <h2 class="section-title" id="sectionTitle">Produtos em Destaque</h2>
+        <div class="products" id="productsGrid"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Cart drawer -->
+  <aside class="cart-drawer" id="cartDrawer" aria-hidden="true">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <h3>Carrinho</h3>
+      <div><button class="btn" id="closeCartBtn">Fechar</button></div>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:8px">
+        <strong>Total:</strong>
+        <strong id="cartTotal">R$ 0,00</strong>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:10px">
+        <button class="btn" id="checkoutBtn" style="flex:1">Finalizar Compra</button>
+        <button class="small-btn" id="clearCartBtn" style="background:#eee">Limpar</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Payment modal -->
+  <div class="modal" id="paymentModal" aria-hidden="true">
+    <div class="modal-content">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+        <h2>Opções de Pagamento</h2>
+        <button id="closePaymentModal" style="background:none;border:0;font-size:22px">&times;</button>
+      </div>
+
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px">
+        <button class="btn" id="pixOption">PIX</button>
+        <button class="btn" id="cardOption">Cartão (Simulado)</button>
+        <button class="btn" id="boletoOption">Boleto (Simulado)</button>
+      </div>
+
+      <div class="modal-grid">
+        <div>
+          <!-- PIX -->
+          <div id="pixPanel">
+            <h3>Pagamento via PIX</h3>
+            <p>Chave PIX (telefone): <strong id="pixKeyDisplay">35999739111</strong></p>
+            <div class="pix-code" id="pixCopyArea">—</div>
+
+            <div style="display:flex;gap:8px;margin-top:8px">
+              <button class="btn" id="copyPixBtn">Copiar Código PIX (com valor)</button>
+              <button class="small-btn" id="showQrBtn">Mostrar QR</button>
+              <button class="btn" id="whatsappPayBtn">Enviar pelo WhatsApp</button>
+            </div>
+
+            <p style="margin-top:10px;color:#444;font-size:14px">
+              Instruções: copie o código e cole no seu app bancário em "Pagar com PIX - Copiar/colar" ou escaneie o QR.
+            </p>
+          </div>
+
+          <!-- Card -->
+          <div id="cardPanel" style="display:none">
+            <h3>Cartão de Crédito (Simulado)</h3>
+            <p>Integração real: Mercado Pago, Pagar.me, PagSeguro etc. — aqui é apenas simulação.</p>
+            <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+              <input placeholder="Número do cartão" style="padding:10px;border-radius:6px;border:1px solid #ddd" />
+              <input placeholder="Nome no cartão" style="padding:10px;border-radius:6px;border:1px solid #ddd" />
+              <div style="display:flex;gap:8px">
+                <input placeholder="MM/AA" style="flex:1;padding:10px;border-radius:6px;border:1px solid #ddd" />
+                <input placeholder="CVV" style="width:100px;padding:10px;border-radius:6px;border:1px solid #ddd" />
+              </div>
+              <button class="btn" id="simulateCardBtn">Pagar (Simulado)</button>
+            </div>
+          </div>
+
+          <!-- Boleto -->
+          <div id="boletoPanel" style="display:none">
+            <h3>Boleto (Simulado)</h3>
+            <p>O boleto será enviado por e-mail (simulação).</p>
+            <button class="btn" id="simulateBoletoBtn">Gerar Boleto (Simulado)</button>
+          </div>
+        </div>
+
+        <div style="border-left:1px solid #f1f1f1;padding-left:12px">
+          <h4>Resumo do Pedido</h4>
+          <div id="miniCartSummary" style="margin-bottom:8px;color:#333"></div>
+          <div style="margin-top:8px">
+            <strong>Total: </strong><span id="modalTotal">R$ 0,00</span>
+          </div>
+
+          <div id="qrBox" style="margin-top:12px;display:none">
+            <p style="margin-bottom:6px"><strong>QR Code (BR Code PIX)</strong></p>
+            <img id="qrImage" class="qr-img" alt="QR Code PIX" />
+            <p style="margin-top:8px;font-size:13px;color:#555">Se o seu banco não reconhecer o QR, copie o código e cole no app.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-columns">
+        <div>
+          <h3>Institucional</h3>
+          <ul style="list-style:none;padding:0;color:#ddd">
+            <li>Sobre Nós</li>
+            <li>Nossas Lojas</li>
+            <li>Política de Privacidade</li>
+            <li>Termos de Uso</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Atendimento</h3>
+          <ul style="list-style:none;padding:0;color:#ddd">
+            <li>Central de Ajuda</li>
+            <li>Perguntas Frequentes</li>
+            <li>Formas de Pagamento</li>
+            <li>Trocas e Devoluções</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Formas de Pagamento</h3>
+          <div style="display:flex;gap:8px;margin-top:6px">
+            <div style="width:48px;height:28px;background:#fff;border-radius:6px;display:flex;align-items:center;justify-content:center">💳</div>
+            <div style="width:48px;height:28px;background:#fff;border-radius:6px;display:flex;align-items:center;justify-content:center">📱</div>
+          </div>
+        </div>
+        <div>
+          <h3>Contato</h3>
+          <div style="color:#ddd">
+            <div>📞 (35) 99973-9111</div>
+            <div>✉️ g6pousoalegre@gmail.com</div>
+            <div>📍 Itajubá - MG</div>
+            <div style="margin-top:8px">Siga-nos:
+              <span style="display:inline-block;margin-left:6px">📘 📷 🐦</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        Amora Secreta © 2025 - Todos os direitos reservados - CNPJ: 00.000.000/0000-00
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp floating -->
+  <a class="whatsapp-float" href="https://wa.me/5535999739111" target="_blank" title="Fale conosco">
+    💚
+  </a>
+
+<script>
+// COLE AQUI TODO O SEU JAVASCRIPT ORIGINAL
+// Todo o código JavaScript que já estava funcionando
+// Com todas as categorias, produtos, carrinho, etc.
+
+/* ======================
    Configurações da loja
    ====================== */
 const STORE_NAME = 'AMORA SECRETA';
@@ -8,145 +295,8 @@ const STORE_PHONE_INTERNAL = '5535999739111';
 const STORE_PHONE_DISPLAY = '(35) 99973-9111';
 const PIX_KEY = '35999739111';
 
-// ✅ URL das Netlify Functions
-const NETLIFY_FUNCTION_URL = '/.netlify/functions/process-payment';
-const CREATE_PREFERENCE_URL = '/.netlify/functions/create-preference';
+// ... TODO O RESTO DO SEU CÓDIGO ORIGINAL ...
 
-// ... (mantenha CATEGORIES e PRODUCTS_BY_CATEGORY) ...
-
-/* ---------- Integração com Netlify Functions ---------- */
-async function processPaymentWithNetlify(paymentData) {
-    showProcessing();
-    
-    try {
-        console.log('🔄 Enviando para Netlify Function...');
-        
-        const response = await fetch(NETLIFY_FUNCTION_URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(paymentData)
-        });
-        
-        if (!response.ok) {
-            throw new Error(`Erro HTTP: ${response.status}`);
-        }
-        
-        const result = await response.json();
-        
-        if (result.success) {
-            showPaymentSuccess();
-            
-            // Limpar carrinho após sucesso
-            setTimeout(() => {
-                cart = [];
-                saveCart();
-                closePaymentModal();
-                closeCart();
-                
-                // Opcional: redirecionar para página de sucesso
-                // window.location.href = '/sucesso.html';
-                
-            }, 3000);
-            
-        } else {
-            throw new Error(result.error || 'Erro no processamento');
-        }
-        
-    } catch (error) {
-        console.error('❌ Erro:', error);
-        showPaymentError('Erro: ' + error.message);
-    }
-}
-
-/* ---------- Processar Pagamento com Cartão ---------- */
-function processCardPayment() {
-    const name = document.getElementById('cardholderName').value;
-    const email = document.getElementById('cardholderEmail').value;
-    const doc = document.getElementById('cardholderDoc').value;
-    
-    if (!name || !email || !doc) {
-        alert('Por favor, preencha todos os dados obrigatórios.');
-        return;
-    }
-    
-    const paymentData = {
-        transactionAmount: cartTotal(),
-        description: `Compra na ${STORE_NAME} - ${cart.length} itens`,
-        installments: parseInt(document.getElementById('installments').value) || 1,
-        payment_method: 'credit_card',
-        payer: {
-            email: email,
-            identification: {
-                type: 'CPF',
-                number: doc.replace(/\D/g, '')
-            }
-        },
-        metadata: {
-            items: cart,
-            store: STORE_NAME,
-            customer_name: name
-        }
-    };
-    
-    processPaymentWithNetlify(paymentData);
-}
-
-/* ---------- Processar Boleto ---------- */
-function processBoletoPayment() {
-    const name = document.getElementById('boletoName').value;
-    const email = document.getElementById('boletoEmail').value;
-    const doc = document.getElementById('boletoDoc').value;
-    
-    if (!name || !email || !doc) {
-        alert('Por favor, preencha todos os dados para gerar o boleto.');
-        return;
-    }
-    
-    const paymentData = {
-        transactionAmount: cartTotal(),
-        description: `Compra na ${STORE_NAME} - Boleto`,
-        payment_method: 'bolbradesco',
-        payer: {
-            email: email,
-            first_name: name.split(' ')[0],
-            last_name: name.split(' ').slice(1).join(' '),
-            identification: {
-                type: 'CPF',
-                number: doc.replace(/\D/g, '')
-            }
-        },
-        metadata: {
-            items: cart,
-            store: STORE_NAME
-        }
-    };
-    
-    processPaymentWithNetlify(paymentData);
-}
-
-// ... (mantenha o resto das funções de utilidade) ...
-
-/* ---------- Event Listeners para Pagamento ---------- */
-document.addEventListener('DOMContentLoaded', function() {
-    // Cartão
-    const processCardBtn = document.getElementById('processCardPayment');
-    if (processCardBtn) {
-        processCardBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            processCardPayment();
-        });
-    }
-    
-    // Boleto
-    const generateBoletoBtn = document.getElementById('generateBoleto');
-    if (generateBoletoBtn) {
-        generateBoletoBtn.addEventListener('click', function(e) {
-            e.preventDefault();
-            processBoletoPayment();
-        });
-    }
-});
-
-// ... (mantenha todas as outras funções: updateCartUI, saveCart, etc.) ...
+</script>
+</body>
+</html>
