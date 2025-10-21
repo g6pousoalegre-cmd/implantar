@@ -421,77 +421,174 @@ const CATEGORIES = [
 /* PRODUTOS COMPLETOS - TODAS AS CATEGORIAS ORIGINAIS */
 const PRODUCTS_BY_CATEGORY = {
   vibradores: [
-    { id: 'vibrador-1', title: 'Vibrador Bullet', price: 59.90, img: 'https://via.placeholder.com/300x300?text=Vibrador+Bullet', category: 'vibradores' },
-    { id: 'vibrador-2', title: 'Vibrador Rabbit', price: 129.90, img: 'https://via.placeholder.com/300x300?text=Vibrador+Rabbit', category: 'vibradores' },
-    { id: 'vibrador-3', title: 'Vibrador Pontal', price: 79.90, img: 'https://via.placeholder.com/300x300?text=Vibrador+Pontal', category: 'vibradores' },
-    { id: 'vibrador-4', title: 'Vibrador Duplo', price: 149.90, img: 'https://via.placeholder.com/300x300?text=Vibrador+Duplo', category: 'vibradores' }
+    { id: 'vibrador-1', title: 'Vibrador Bullet', price: 59.90, img: 'images/gel/gelteste.png', category: 'vibradores' },
+    { id: 'vibrador-2', title: 'Vibrador Rabbit', price: 129.90, img: 'images/gel/gelteste.png', category: 'vibradores' },
+    { id: 'vibrador-3', title: 'Vibrador Pontal', price: 79.90, img: 'images/gel/gelteste.png', category: 'vibradores' },
+    { id: 'vibrador-4', title: 'Vibrador Duplo', price: 149.90, img: 'images/gel/gelteste.png', category: 'vibradores' },
+    { id: 'vibrador-5', title: 'Vibrador Control Remoto', price: 169.90, img: 'images/gel/gelteste.png', category: 'vibradores' },
+    { id: 'vibrador-6', title: 'Vibrador Anal', price: 89.90, img: 'images/gel/gelteste.png', category: 'vibradores' },
+    { id: 'vibrador-7', title: 'Vibrador Wand', price: 199.90, img: 'images/gel/gelteste.png', category: 'vibradores' },
+    { id: 'vibrador-8', title: 'Vibrador G-Spot', price: 119.90, img: 'images/gel/gelteste.png', category: 'vibradores' },
+    { id: 'vibrador-9', title: 'Vibrador Silicone', price: 99.90, img: 'images/gel/gelteste.png', category: 'vibradores' },
+    { id: 'vibrador-10', title: 'Vibrador Realista', price: 139.90, img: 'images/gel/gelteste.png', category: 'vibradores' },
+    { id: 'vibrador-11', title: 'Vibrador Mágico', price: 109.90, img: 'images/gel/gelteste.png', category: 'vibradores' },
+    { id: 'vibrador-12', title: 'Vibrador Premium', price: 229.90, img: 'images/gel/gelteste.png', category: 'vibradores' }
   ],
   masturbadores: [
-    { id: 'masturbador-1', title: 'Masturbador Pussy', price: 89.90, img: 'https://via.placeholder.com/300x300?text=Masturbador+Pussy', category: 'masturbadores' },
-    { id: 'masturbador-2', title: 'Masturbador Anál', price: 99.90, img: 'https://via.placeholder.com/300x300?text=Masturbador+Anal', category: 'masturbadores' },
-    { id: 'masturbador-3', title: 'Masturbador Realista', price: 129.90, img: 'https://via.placeholder.com/300x300?text=Masturbador+Realista', category: 'masturbadores' },
-    { id: 'masturbador-4', title: 'Masturbador Vibratório', price: 159.90, img: 'https://via.placeholder.com/300x300?text=Masturbador+Vibratorio', category: 'masturbadores' }
+    { id: 'masturbador-1', title: 'Masturbador Pussy', price: 89.90, img: 'images/gel/gelteste.png', category: 'masturbadores' },
+    { id: 'masturbador-2', title: 'Masturbador Anál', price: 99.90, img: 'images/gel/gelteste.png', category: 'masturbadores' },
+    { id: 'masturbador-3', title: 'Masturbador Realista', price: 129.90, img: 'images/gel/gelteste.png', category: 'masturbadores' },
+    { id: 'masturbador-4', title: 'Masturbador Vibratório', price: 159.90, img: 'images/gel/gelteste.png', category: 'masturbadores' },
+    { id: 'masturbador-5', title: 'Masturbador Duplo', price: 179.90, img: 'images/gel/gelteste.png', category: 'masturbadores' },
+    { id: 'masturbador-6', title: 'Masturbador Pocket', price: 69.90, img: 'images/gel/gelteste.png', category: 'masturbadores' },
+    { id: 'masturbador-7', title: 'Masturbador Térmico', price: 139.90, img: 'images/gel/gelteste.png', category: 'masturbadores' },
+    { id: 'masturbador-8', title: 'Masturbador Silicone', price: 119.90, img: 'images/gel/gelteste.png', category: 'masturbadores' },
+    { id: 'masturbador-9', title: 'Masturbador Control Remoto', price: 199.90, img: 'images/gel/gelteste.png', category: 'masturbadores' },
+    { id: 'masturbador-10', title: 'Masturbador Premium', price: 229.90, img: 'images/gel/gelteste.png', category: 'masturbadores' },
+    { id: 'masturbador-11', title: 'Masturbador Masculino', price: 149.90, img: 'images/gel/gelteste.png', category: 'masturbadores' },
+    { id: 'masturbador-12', title: 'Masturbador Feminino', price: 139.90, img: 'images/gel/gelteste.png', category: 'masturbadores' }
   ],
   cosmeticos: [
-    { id: 'cosmetico-1', title: 'Gel Excitante', price: 49.90, img: 'https://via.placeholder.com/300x300?text=Gel+Excitante', category: 'cosmeticos' },
-    { id: 'cosmetico-2', title: 'Lubrificante Íntimo', price: 39.90, img: 'https://via.placeholder.com/300x300?text=Lubrificante+Intimo', category: 'cosmeticos' },
-    { id: 'cosmetico-3', title: 'Óleo Massagem', price: 59.90, img: 'https://via.placeholder.com/300x300?text=Oleo+Massagem', category: 'cosmeticos' },
-    { id: 'cosmetico-4', title: 'Gel Sensitivo', price: 44.90, img: 'https://via.placeholder.com/300x300?text=Gel+Sensitivo', category: 'cosmeticos' }
+    { id: 'cosmetico-1', title: 'Gel Excitante', price: 49.90, img: 'images/gel/gelteste.png', category: 'cosmeticos' },
+    { id: 'cosmetico-2', title: 'Lubrificante Íntimo', price: 39.90, img: 'images/gel/gelteste.png', category: 'cosmeticos' },
+    { id: 'cosmetico-3', title: 'Óleo Massagem', price: 59.90, img: 'images/gel/gelteste.png', category: 'cosmeticos' },
+    { id: 'cosmetico-4', title: 'Gel Sensitivo', price: 44.90, img: 'images/gel/gelteste.png', category: 'cosmeticos' },
+    { id: 'cosmetico-5', title: 'Lubrificante Aquecedor', price: 54.90, img: 'images/gel/gelteste.png', category: 'cosmeticos' },
+    { id: 'cosmetico-6', title: 'Gel Esfriante', price: 47.90, img: 'images/gel/gelteste.png', category: 'cosmeticos' },
+    { id: 'cosmetico-7', title: 'Óleo Corporal', price: 62.90, img: 'images/gel/gelteste.png', category: 'cosmeticos' },
+    { id: 'cosmetico-8', title: 'Lubrificante Saborizado', price: 42.90, img: 'images/gel/gelteste.png', category: 'cosmeticos' },
+    { id: 'cosmetico-9', title: 'Gel Erótico', price: 51.90, img: 'images/gel/gelteste.png', category: 'cosmeticos' },
+    { id: 'cosmetico-10', title: 'Óleo Sensual', price: 67.90, img: 'images/gel/gelteste.png', category: 'cosmeticos' },
+    { id: 'cosmetico-11', title: 'Lubrificante Natural', price: 37.90, img: 'images/gel/gelteste.png', category: 'cosmeticos' },
+    { id: 'cosmetico-12', title: 'Gel Íntimo', price: 45.90, img: 'images/gel/gelteste.png', category: 'cosmeticos' }
   ],
   acessorios: [
-    { id: 'acessorio-1', title: 'Anel Peniano', price: 29.90, img: 'https://via.placeholder.com/300x300?text=Anel+Peniano', category: 'acessorios' },
-    { id: 'acessorio-2', title: 'Algemas de Veludo', price: 49.90, img: 'https://via.placeholder.com/300x300?text=Algemas+Veludo', category: 'acessorios' },
-    { id: 'acessorio-3', title: 'Venda Sensual', price: 19.90, img: 'https://via.placeholder.com/300x300?text=Venda+Sensual', category: 'acessorios' },
-    { id: 'acessorio-4', title: 'Spanker', price: 39.90, img: 'https://via.placeholder.com/300x300?text=Spanker', category: 'acessorios' }
+    { id: 'acessorio-1', title: 'Anel Peniano', price: 29.90, img: 'images/gel/gelteste.png', category: 'acessorios' },
+    { id: 'acessorio-2', title: 'Algemas de Veludo', price: 49.90, img: 'images/gel/gelteste.png', category: 'acessorios' },
+    { id: 'acessorio-3', title: 'Venda Sensual', price: 19.90, img: 'images/gel/gelteste.png', category: 'acessorios' },
+    { id: 'acessorio-4', title: 'Spanker', price: 39.90, img: 'images/gel/gelteste.png', category: 'acessorios' },
+    { id: 'acessorio-5', title: 'Cinta Peniana', price: 59.90, img: 'images/gel/gelteste.png', category: 'acessorios' },
+    { id: 'acessorio-6', title: 'Bolas Ben Wa', price: 69.90, img: 'images/gel/gelteste.png', category: 'acessorios' },
+    { id: 'acessorio-7', title: 'Pingente Erótico', price: 24.90, img: 'images/gel/gelteste.png', category: 'acessorios' },
+    { id: 'acessorio-8', title: 'Coleira de Couro', price: 34.90, img: 'images/gel/gelteste.png', category: 'acessorios' },
+    { id: 'acessorio-9', title: 'Máscara Sensual', price: 27.90, img: 'images/gel/gelteste.png', category: 'acessorios' },
+    { id: 'acessorio-10', title: 'Bengala Erótica', price: 44.90, img: 'images/gel/gelteste.png', category: 'acessorios' },
+    { id: 'acessorio-11', title: 'Pulseira de Couro', price: 31.90, img: 'images/gel/gelteste.png', category: 'acessorios' },
+    { id: 'acessorio-12', title: 'Kit Acessórios', price: 89.90, img: 'images/gel/gelteste.png', category: 'acessorios' }
   ],
   brinquedos: [
-    { id: 'brinquedo-1', title: 'Brinquedo Erótico 1', price: 79.90, img: 'https://via.placeholder.com/300x300?text=Brinquedo+1', category: 'brinquedos' },
-    { id: 'brinquedo-2', title: 'Brinquedo Erótico 2', price: 89.90, img: 'https://via.placeholder.com/300x300?text=Brinquedo+2', category: 'brinquedos' },
-    { id: 'brinquedo-3', title: 'Brinquedo Erótico 3', price: 99.90, img: 'https://via.placeholder.com/300x300?text=Brinquedo+3', category: 'brinquedos' },
-    { id: 'brinquedo-4', title: 'Brinquedo Erótico 4', price: 109.90, img: 'https://via.placeholder.com/300x300?text=Brinquedo+4', category: 'brinquedos' }
+    { id: 'brinquedo-1', title: 'Brinquedo Erótico 1', price: 79.90, img: 'images/gel/gelteste.png', category: 'brinquedos' },
+    { id: 'brinquedo-2', title: 'Brinquedo Erótico 2', price: 89.90, img: 'images/gel/gelteste.png', category: 'brinquedos' },
+    { id: 'brinquedo-3', title: 'Brinquedo Erótico 3', price: 99.90, img: 'images/gel/gelteste.png', category: 'brinquedos' },
+    { id: 'brinquedo-4', title: 'Brinquedo Erótico 4', price: 109.90, img: 'images/gel/gelteste.png', category: 'brinquedos' },
+    { id: 'brinquedo-5', title: 'Brinquedo Erótico 5', price: 119.90, img: 'images/gel/gelteste.png', category: 'brinquedos' },
+    { id: 'brinquedo-6', title: 'Brinquedo Erótico 6', price: 129.90, img: 'images/gel/gelteste.png', category: 'brinquedos' },
+    { id: 'brinquedo-7', title: 'Brinquedo Erótico 7', price: 139.90, img: 'images/gel/gelteste.png', category: 'brinquedos' },
+    { id: 'brinquedo-8', title: 'Brinquedo Erótico 8', price: 149.90, img: 'images/gel/gelteste.png', category: 'brinquedos' },
+    { id: 'brinquedo-9', title: 'Brinquedo Erótico 9', price: 159.90, img: 'images/gel/gelteste.png', category: 'brinquedos' },
+    { id: 'brinquedo-10', title: 'Brinquedo Erótico 10', price: 169.90, img: 'images/gel/gelteste.png', category: 'brinquedos' },
+    { id: 'brinquedo-11', title: 'Brinquedo Erótico 11', price: 179.90, img: 'images/gel/gelteste.png', category: 'brinquedos' },
+    { id: 'brinquedo-12', title: 'Brinquedo Erótico 12', price: 189.90, img: 'images/gel/gelteste.png', category: 'brinquedos' }
   ],
   proteses: [
-    { id: 'protese-1', title: 'Prótese Realista', price: 149.90, img: 'https://via.placeholder.com/300x300?text=Protese+Realista', category: 'proteses' },
-    { id: 'protese-2', title: 'Plug Anal Pequeno', price: 39.90, img: 'https://via.placeholder.com/300x300?text=Plug+Anal+P', category: 'proteses' },
-    { id: 'protese-3', title: 'Plug Anal Médio', price: 49.90, img: 'https://via.placeholder.com/300x300?text=Plug+Anal+M', category: 'proteses' },
-    { id: 'protese-4', title: 'Plug Anal Grande', price: 59.90, img: 'https://via.placeholder.com/300x300?text=Plug+Anal+G', category: 'proteses' }
+    { id: 'protese-1', title: 'Prótese Realista', price: 149.90, img: 'images/gel/gelteste.png', category: 'proteses' },
+    { id: 'protese-2', title: 'Plug Anal Pequeno', price: 39.90, img: 'images/gel/gelteste.png', category: 'proteses' },
+    { id: 'protese-3', title: 'Plug Anal Médio', price: 49.90, img: 'images/gel/gelteste.png', category: 'proteses' },
+    { id: 'protese-4', title: 'Plug Anal Grande', price: 59.90, img: 'images/gel/gelteste.png', category: 'proteses' },
+    { id: 'protese-5', title: 'Prótese Dupla', price: 169.90, img: 'images/gel/gelteste.png', category: 'proteses' },
+    { id: 'protese-6', title: 'Prótese Vibratória', price: 189.90, img: 'images/gel/gelteste.png', category: 'proteses' },
+    { id: 'protese-7', title: 'Plug Anal Vibratório', price: 79.90, img: 'images/gel/gelteste.png', category: 'proteses' },
+    { id: 'protese-8', title: 'Prótese Realista Plus', price: 199.90, img: 'images/gel/gelteste.png', category: 'proteses' },
+    { id: 'protese-9', title: 'Kit Plugs Anal', price: 129.90, img: 'images/gel/gelteste.png', category: 'proteses' },
+    { id: 'protese-10', title: 'Prótese Premium', price: 229.90, img: 'images/gel/gelteste.png', category: 'proteses' },
+    { id: 'protese-11', title: 'Plug Anal Jewel', price: 69.90, img: 'images/gel/gelteste.png', category: 'proteses' },
+    { id: 'protese-12', title: 'Prótese Realista Gold', price: 249.90, img: 'images/gel/gelteste.png', category: 'proteses' }
   ],
   fantasia: [
-    { id: 'fantasia-1', title: 'Fantasia Enfermeira', price: 89.90, img: 'https://via.placeholder.com/300x300?text=Fantasia+Enfermeira', category: 'fantasia' },
-    { id: 'fantasia-2', title: 'Fantasia Policial', price: 99.90, img: 'https://via.placeholder.com/300x300?text=Fantasia+Policial', category: 'fantasia' },
-    { id: 'fantasia-3', title: 'Fantasia Coelhinha', price: 79.90, img: 'https://via.placeholder.com/300x300?text=Fantasia+Coelhinha', category: 'fantasia' },
-    { id: 'fantasia-4', title: 'Fantasia Borboleta', price: 69.90, img: 'https://via.placeholder.com/300x300?text=Fantasia+Borboleta', category: 'fantasia' }
+    { id: 'fantasia-1', title: 'Fantasia Enfermeira', price: 89.90, img: 'images/gel/gelteste.png', category: 'fantasia' },
+    { id: 'fantasia-2', title: 'Fantasia Policial', price: 99.90, img: 'images/gel/gelteste.png', category: 'fantasia' },
+    { id: 'fantasia-3', title: 'Fantasia Coelhinha', price: 79.90, img: 'images/gel/gelteste.png', category: 'fantasia' },
+    { id: 'fantasia-4', title: 'Fantasia Borboleta', price: 69.90, img: 'images/gel/gelteste.png', category: 'fantasia' },
+    { id: 'fantasia-5', title: 'Fantasia Super-heroína', price: 109.90, img: 'images/gel/gelteste.png', category: 'fantasia' },
+    { id: 'fantasia-6', title: 'Fantasia Fada', price: 84.90, img: 'images/gel/gelteste.png', category: 'fantasia' },
+    { id: 'fantasia-7', title: 'Fantasia Vampira', price: 94.90, img: 'images/gel/gelteste.png', category: 'fantasia' },
+    { id: 'fantasia-8', title: 'Fantasia Angel', price: 89.90, img: 'images/gel/gelteste.png', category: 'fantasia' },
+    { id: 'fantasia-9', title: 'Fantasia Devil', price: 99.90, img: 'images/gel/gelteste.png', category: 'fantasia' },
+    { id: 'fantasia-10', title: 'Fantasia French Maid', price: 79.90, img: 'images/gel/gelteste.png', category: 'fantasia' },
+    { id: 'fantasia-11', title: 'Fantasia Schoolgirl', price: 74.90, img: 'images/gel/gelteste.png', category: 'fantasia' },
+    { id: 'fantasia-12', title: 'Fantasia Cop', price: 89.90, img: 'images/gel/gelteste.png', category: 'fantasia' }
   ],
   lingeries: [
-    { id: 'lingerie-1', title: 'Lingerie Rendada', price: 69.90, img: 'https://via.placeholder.com/300x300?text=Lingerie+Rendada', category: 'lingeries' },
-    { id: 'lingerie-2', title: 'Lingerie Sensual', price: 79.90, img: 'https://via.placeholder.com/300x300?text=Lingerie+Sensual', category: 'lingeries' },
-    { id: 'lingerie-3', title: 'Lingerie Couro', price: 99.90, img: 'https://via.placeholder.com/300x300?text=Lingerie+Couro', category: 'lingeries' },
-    { id: 'lingerie-4', title: 'Lingerie Babydoll', price: 89.90, img: 'https://via.placeholder.com/300x300?text=Lingerie+Babydoll', category: 'lingeries' }
+    { id: 'lingerie-1', title: 'Lingerie Rendada', price: 69.90, img: 'images/gel/gelteste.png', category: 'lingeries' },
+    { id: 'lingerie-2', title: 'Lingerie Sensual', price: 79.90, img: 'images/gel/gelteste.png', category: 'lingeries' },
+    { id: 'lingerie-3', title: 'Lingerie Couro', price: 99.90, img: 'images/gel/gelteste.png', category: 'lingeries' },
+    { id: 'lingerie-4', title: 'Lingerie Babydoll', price: 89.90, img: 'images/gel/gelteste.png', category: 'lingeries' },
+    { id: 'lingerie-5', title: 'Lingerie Bodystocking', price: 109.90, img: 'images/gel/gelteste.png', category: 'lingeries' },
+    { id: 'lingerie-6', title: 'Lingerie Transparente', price: 74.90, img: 'images/gel/gelteste.png', category: 'lingeries' },
+    { id: 'lingerie-7', title: 'Lingerie Vermelha', price: 84.90, img: 'images/gel/gelteste.png', category: 'lingeries' },
+    { id: 'lingerie-8', title: 'Lingerie Preta', price: 79.90, img: 'images/gel/gelteste.png', category: 'lingeries' },
+    { id: 'lingerie-9', title: 'Lingerie Branca', price: 69.90, img: 'images/gel/gelteste.png', category: 'lingeries' },
+    { id: 'lingerie-10', title: 'Lingerie Azul', price: 89.90, img: 'images/gel/gelteste.png', category: 'lingeries' },
+    { id: 'lingerie-11', title: 'Lingerie Verde', price: 79.90, img: 'images/gel/gelteste.png', category: 'lingeries' },
+    { id: 'lingerie-12', title: 'Lingerie Roxa', price: 94.90, img: 'images/gel/gelteste.png', category: 'lingeries' }
   ],
   sado: [
-    { id: 'sado-1', title: 'Algemas de Metal', price: 59.90, img: 'https://via.placeholder.com/300x300?text=Algemas+Metal', category: 'sado' },
-    { id: 'sado-2', title: 'Máscara de Couro', price: 49.90, img: 'https://via.placeholder.com/300x300?text=Mascara+Couro', category: 'sado' },
-    { id: 'sado-3', title: 'Chicote de Couro', price: 69.90, img: 'https://via.placeholder.com/300x300?text=Chicote+Couro', category: 'sado' },
-    { id: 'sado-4', title: 'Coleira com Corrente', price: 39.90, img: 'https://via.placeholder.com/300x300?text=Coleira+Corrente', category: 'sado' }
+    { id: 'sado-1', title: 'Algemas de Metal', price: 59.90, img: 'images/gel/gelteste.png', category: 'sado' },
+    { id: 'sado-2', title: 'Máscara de Couro', price: 49.90, img: 'images/gel/gelteste.png', category: 'sado' },
+    { id: 'sado-3', title: 'Chicote de Couro', price: 69.90, img: 'images/gel/gelteste.png', category: 'sado' },
+    { id: 'sado-4', title: 'Coleira com Corrente', price: 39.90, img: 'images/gel/gelteste.png', category: 'sado' },
+    { id: 'sado-5', title: 'Mordaça de Borracha', price: 34.90, img: 'images/gel/gelteste.png', category: 'sado' },
+    { id: 'sado-6', title: 'Spanker de Couro', price: 54.90, img: 'images/gel/gelteste.png', category: 'sado' },
+    { id: 'sado-7', title: 'Cinta de Castidade', price: 129.90, img: 'images/gel/gelteste.png', category: 'sado' },
+    { id: 'sado-8', title: 'Algemas de Velcro', price: 44.90, img: 'images/gel/gelteste.png', category: 'sado' },
+    { id: 'sado-9', title: 'Máscara de Latex', price: 59.90, img: 'images/gel/gelteste.png', category: 'sado' },
+    { id: 'sado-10', title: 'Chicote de Cabelo', price: 79.90, img: 'images/gel/gelteste.png', category: 'sado' },
+    { id: 'sado-11', title: 'Coleira com Spike', price: 49.90, img: 'images/gel/gelteste.png', category: 'sado' },
+    { id: 'sado-12', title: 'Kit Sado Básico', price: 149.90, img: 'images/gel/gelteste.png', category: 'sado' }
   ],
   higiene: [
-    { id: 'higiene-1', title: 'Sabonete Íntimo', price: 24.90, img: 'https://via.placeholder.com/300x300?text=Sabonete+Intimo', category: 'higiene' },
-    { id: 'higiene-2', title: 'Lenço Umedecido', price: 19.90, img: 'https://via.placeholder.com/300x300?text=Lenco+Umedecido', category: 'higiene' },
-    { id: 'higiene-3', title: 'Hidratante Íntimo', price: 34.90, img: 'https://via.placeholder.com/300x300?text=Hidratante+Intimo', category: 'higiene' },
-    { id: 'higiene-4', title: 'Spray Íntimo', price: 29.90, img: 'https://via.placeholder.com/300x300?text=Spray+Intimo', category: 'higiene' }
+    { id: 'higiene-1', title: 'Sabonete Íntimo', price: 24.90, img: 'images/gel/gelteste.png', category: 'higiene' },
+    { id: 'higiene-2', title: 'Lenço Umedecido', price: 19.90, img: 'images/gel/gelteste.png', category: 'higiene' },
+    { id: 'higiene-3', title: 'Hidratante Íntimo', price: 34.90, img: 'images/gel/gelteste.png', category: 'higiene' },
+    { id: 'higiene-4', title: 'Spray Íntimo', price: 29.90, img: 'images/gel/gelteste.png', category: 'higiene' },
+    { id: 'higiene-5', title: 'Creme Hidratante', price: 39.90, img: 'images/gel/gelteste.png', category: 'higiene' },
+    { id: 'higiene-6', title: 'Óleo Corporal', price: 44.90, img: 'images/gel/gelteste.png', category: 'higiene' },
+    { id: 'higiene-7', title: 'Gel de Limpeza', price: 27.90, img: 'images/gel/gelteste.png', category: 'higiene' },
+    { id: 'higiene-8', title: 'Sabonete Líquido', price: 22.90, img: 'images/gel/gelteste.png', category: 'higiene' },
+    { id: 'higiene-9', title: 'Creme Relaxante', price: 37.90, img: 'images/gel/gelteste.png', category: 'higiene' },
+    { id: 'higiene-10', title: 'Spray Refrescante', price: 31.90, img: 'images/gel/gelteste.png', category: 'higiene' },
+    { id: 'higiene-11', title: 'Loção Corporal', price: 42.90, img: 'images/gel/gelteste.png', category: 'higiene' },
+    { id: 'higiene-12', title: 'Kit Higiene Íntima', price: 89.90, img: 'images/gel/gelteste.png', category: 'higiene' }
   ],
   salao: [
-    { id: 'salao-1', title: 'Vibrador Bullet - Promo', price: 39.90, img: 'https://via.placeholder.com/300x300?text=Promo+Vibrador', category: 'salao' },
-    { id: 'salao-2', title: 'Lubrificante - Oferta', price: 29.90, img: 'https://via.placeholder.com/300x300?text=Promo+Lubrificante', category: 'salao' },
-    { id: 'salao-3', title: 'Anel Peniano - Desconto', price: 19.90, img: 'https://via.placeholder.com/300x300?text=Promo+Anel', category: 'salao' },
-    { id: 'salao-4', title: 'Plug Anal - Liquidação', price: 34.90, img: 'https://via.placeholder.com/300x300?text=Promo+Plug', category: 'salao' }
+    { id: 'salao-1', title: 'Vibrador Bullet - Promo', price: 39.90, img: 'images/gel/gelteste.png', category: 'salao' },
+    { id: 'salao-2', title: 'Lubrificante - Oferta', price: 29.90, img: 'images/gel/gelteste.png', category: 'salao' },
+    { id: 'salao-3', title: 'Anel Peniano - Desconto', price: 19.90, img: 'images/gel/gelteste.png', category: 'salao' },
+    { id: 'salao-4', title: 'Plug Anal - Liquidação', price: 34.90, img: 'images/gel/gelteste.png', category: 'salao' },
+    { id: 'salao-5', title: 'Lingerie - Promocional', price: 49.90, img: 'images/gel/gelteste.png', category: 'salao' },
+    { id: 'salao-6', title: 'Fantasia - Oferta', price: 59.90, img: 'images/gel/gelteste.png', category: 'salao' },
+    { id: 'salao-7', title: 'Masturbador - Desconto', price: 69.90, img: 'images/gel/gelteste.png', category: 'salao' },
+    { id: 'salao-8', title: 'Acessório - Promoção', price: 24.90, img: 'images/gel/gelteste.png', category: 'salao' },
+    { id: 'salao-9', title: 'Cosmético - Liquidação', price: 34.90, img: 'images/gel/gelteste.png', category: 'salao' },
+    { id: 'salao-10', title: 'Brinquedo - Oferta', price: 79.90, img: 'images/gel/gelteste.png', category: 'salao' },
+    { id: 'salao-11', title: 'Prótese - Promocional', price: 99.90, img: 'images/gel/gelteste.png', category: 'salao' },
+    { id: 'salao-12', title: 'Sado - Desconto', price: 44.90, img: 'images/gel/gelteste.png', category: 'salao' }
   ],
   'mais-vendidos': [
-    { id: 'mais-vendido-1', title: 'Vibrador Rabbit Premium', price: 119.90, img: 'https://via.placeholder.com/300x300?text=Mais+Vendido+1', category: 'mais-vendidos' },
-    { id: 'mais-vendido-2', title: 'Gel Excitante Plus', price: 42.90, img: 'https://via.placeholder.com/300x300?text=Mais+Vendido+2', category: 'mais-vendidos' },
-    { id: 'mais-vendido-3', title: 'Lingerie Sensual Premium', price: 89.90, img: 'https://via.placeholder.com/300x300?text=Mais+Vendido+3', category: 'mais-vendidos' },
-    { id: 'mais-vendido-4', title: 'Masturbador Realista', price: 129.90, img: 'https://via.placeholder.com/300x300?text=Mais+Vendido+4', category: 'mais-vendidos' }
+    { id: 'mais-vendido-1', title: 'Vibrador Rabbit Premium', price: 19.90, img: 'images/gel/cremeteste.png', category: 'mais-vendidos' },
+    { id: 'mais-vendido-2', title: 'Sache Gel Excitante Plus', price: 2.90, img: 'images/gel/gelteste.png', category: 'mais-vendidos' },
+    { id: 'mais-vendido-3', title: 'Lingerie Sensual Premium', price: 89.90, img: 'images/gel/gelteste.png', category: 'mais-vendidos' },
+    { id: 'mais-vendido-4', title: 'Masturbador Realista', price: 129.90, img: 'images/gel/gelteste.png', category: 'mais-vendidos' },
+    { id: 'mais-vendido-5', title: 'Plug Anal Jewel', price: 69.90, img: 'images/gel/gelteste.png', category: 'mais-vendidos' },
+    { id: 'mais-vendido-6', title: 'Anel Peniano Vibratório', price: 79.90, img: 'images/gel/gelteste.png', category: 'mais-vendidos' },
+    { id: 'mais-vendido-7', title: 'Fantasia Enfermeira Plus', price: 99.90, img: 'images/gel/gelteste.png', category: 'mais-vendidos' },
+    { id: 'mais-vendido-8', title: 'Lubrificante Aquecedor', price: 44.90, img: 'images/gel/gelteste.png', category: 'mais-vendidos' },
+    { id: 'mais-vendido-9', title: 'Kit Acessórios Premium', price: 119.90, img: 'images/gel/gelteste.png', category: 'mais-vendidos' },
+    { id: 'mais-vendido-10', title: 'Vibrador Wand Plus', price: 179.90, img: 'images/gel/gelteste.png', category: 'mais-vendidos' },
+    { id: 'mais-vendido-11', title: 'Prótese Realista Gold', price: 199.90, img: 'images/gel/gelteste.png', category: 'mais-vendidos' },
+    { id: 'mais-vendido-12', title: 'Masturbador Control Remoto', price: 159.90, img: 'images/gel/gelteste.png', category: 'mais-vendidos' }
   ]
+
 };
 
 /* ======================
@@ -1008,3 +1105,4 @@ function closeCart() {
 </script>
 </body>
 </html>
+
